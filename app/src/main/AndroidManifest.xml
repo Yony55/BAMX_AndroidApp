@@ -10,8 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BAMXapp">
         <activity
+            android:name=".Entregas"
+            android:exported="true"/>
+        <activity
+            android:name=".Usuario"
+            android:exported="true" />
+        <activity
+            android:name=".Inventario"
+            android:exported="true"/>
+        <activity
+            android:name=".MainMenu"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

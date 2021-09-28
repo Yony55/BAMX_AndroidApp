@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">BAMXapp</string>
+    <string name="usuario">Usuario</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="Inventario">Inventario</string>
+    <string name="Rutas">Rutas</string>
+    <string name="Usuario">Usuario</string>
+    <string name="Entregas">Entregas</string>
+    <string name="Modelo_Static">Modelo:</string>
+    <string name="Color_Static">Color:</string>
+    <string name="Placas_Static">Placas:</string>
+    <string name="Verificacion_Static">Verificación:</string>
+    <string name="Poliza_Static">Poliza de Seguro:</string>
+
 </resources>
