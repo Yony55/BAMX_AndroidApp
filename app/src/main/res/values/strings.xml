@@ -12,5 +12,6 @@
     <string name="Placas_Static">Placas:</string>
     <string name="Verificacion_Static">Verificación:</string>
     <string name="Poliza_Static">Poliza de Seguro:</string>
+    <string name="Vigencia_licencia">Vigencia de licencia:</string>
 
 </resources>

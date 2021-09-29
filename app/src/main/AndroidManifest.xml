@@ -11,10 +11,12 @@
         android:theme="@style/Theme.BAMXapp">
         <activity
             android:name=".Entregas"
-            android:exported="true"/>
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"/>
         <activity
             android:name=".Usuario"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"/>
         <activity
             android:name=".Inventario"
             android:exported="true"/>

@@ -33,12 +33,12 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
 //            startActivity(intent)
 //        }
         usuario.setOnClickListener {
-            print("Diste click a inventario")
+            print("Diste click a Usuario")
             val intent = Intent(this@MainMenu, Usuario::class.java)
             startActivity(intent)
         }
         entregas.setOnClickListener {
-            print("Diste click a inventario")
+            print("Diste click a Entregas")
             val intent = Intent(this@MainMenu, Entregas::class.java)
             startActivity(intent)
         }
