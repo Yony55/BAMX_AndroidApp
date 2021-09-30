@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BAMXapp">
         <activity
+            android:name=".EntregasInventario"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity
+            android:name=".Entregas2"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity
             android:name=".Entregas"
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar"/>

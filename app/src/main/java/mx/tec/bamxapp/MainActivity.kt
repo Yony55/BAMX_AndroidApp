@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?){
         when (p0!!.id) {
             R.id.btn_login -> {
-                val key = "12345"
-                val user = "Rafael"
+                val key = ""
+                val user = ""
                 println("Diste click al boton Login")
 
                 if(edt_user.text.toString() == user && edt_password.text.toString() == key){
