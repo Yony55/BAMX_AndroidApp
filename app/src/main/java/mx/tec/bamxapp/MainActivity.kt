@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -15,9 +16,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
 
         val logIn = findViewById<Button>(R.id.btn_login)
-        val user = findViewById<EditText>(R.id.edt_user)
-        val password = findViewById<EditText>(R.id.edt_password)
-
         logIn.setOnClickListener(this@MainActivity)
 
 
@@ -37,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     println("Datos correctos")
                 }
                 else{
+                    edt_password.setText("")
                     println("Datos Incorrectos")
                     Toast.makeText(this@MainActivity, "Datos Incorrectos", Toast.LENGTH_SHORT).show()
                 }
