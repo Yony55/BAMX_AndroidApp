@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_grey">#404040</color>
     <color name="ultra_light_grey">#565656</color>
+    <color name="rojo_bamx">#ed1a3b</color>
+    <color name="gris_bamx">#58595B</color>
+    <color name="amarillo_bamx">#FDB913</color>
+    <color name="verde_bamx">#0DB14B</color>
 </resources>

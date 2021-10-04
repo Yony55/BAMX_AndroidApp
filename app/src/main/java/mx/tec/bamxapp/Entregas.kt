@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 
 class Entregas : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,9 +15,17 @@ class Entregas : AppCompatActivity(), View.OnClickListener {
 
         val entregas = findViewById<Button>(R.id.btn_entregas_entregas)
         val inventario = findViewById<Button>(R.id.btn_entregas_inventario)
+        val back = findViewById<ImageButton>(R.id.btn_back_inventario)
 
+        back.setOnClickListener(this@Entregas)
         entregas.setOnClickListener(this@Entregas)
         inventario.setOnClickListener(this@Entregas)
+
+        back.setOnClickListener {
+            print("Diste click a back")
+            val intent = Intent(this@Entregas, MainMenu::class.java)
+            startActivity(intent)
+        }
 
         entregas.setOnClickListener {
             println("Diste click en entregas")
