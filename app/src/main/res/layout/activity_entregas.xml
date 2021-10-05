@@ -51,75 +51,75 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/LinearLayout" />
 
-    <TextView
-        android:id="@+id/tv_static_modelo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/shc_bold"
-        android:text="@string/Modelo_Static"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_troca" />
+        <TextView
+            android:id="@+id/tv_static_modelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/omnes_semibold"
+            android:text="@string/Modelo_Static"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_troca" />
 
-    <TextView
-        android:id="@+id/tv_static_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/shc_bold"
-        android:text="@string/Color_Static"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_static_modelo" />
+        <TextView
+            android:id="@+id/tv_static_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/omnes_semibold"
+            android:text="@string/Color_Static"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_static_modelo" />
 
-    <TextView
-        android:id="@+id/tv_static_poliza"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/shc_bold"
-        android:text="@string/Poliza_Static"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_static_verificacion" />
+        <TextView
+            android:id="@+id/tv_static_poliza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/omnes_semibold"
+            android:text="@string/Poliza_Static"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.092"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_static_verificacion" />
 
-    <TextView
-        android:id="@+id/tv_static_verificacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/shc_bold"
-        android:text="@string/Verificacion_Static"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_static_placas" />
+        <TextView
+            android:id="@+id/tv_static_verificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/omnes_semibold"
+            android:text="@string/Verificacion_Static"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.067"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_static_placas" />
 
-    <TextView
-        android:id="@+id/tv_static_placas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/shc_bold"
-        android:text="@string/Placas_Static"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_static_color" />
+        <TextView
+            android:id="@+id/tv_static_placas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/omnes_semibold"
+            android:text="@string/Placas_Static"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_static_color" />
 
         <Button
             android:id="@+id/btn_entregas_entregas"
@@ -128,7 +128,7 @@
             android:layout_marginTop="36dp"
             android:background="@drawable/rounded_corners"
             android:backgroundTint="@color/amarillo_bamx"
-            android:fontFamily="@font/shc_bodl"
+            android:fontFamily="@font/omnes_semibold"
             android:text="@string/Entregas"
             android:textColor="#000000"
             android:textSize="24sp"
@@ -145,7 +145,7 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/rounded_corners"
             android:backgroundTint="@color/amarillo_bamx"
-            android:fontFamily="@font/shc_bodl"
+            android:fontFamily="@font/omnes_semibold"
             android:text="@string/Inventario"
             android:textColor="#000000"
             android:textSize="24sp"

@@ -30,9 +30,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingStart="30px"
-                android:text="Bienvenido Juan"
+                android:text="Bienvenido, Rafael"
                 android:textColor="#FFFFFF"
-                android:textSize="34sp" />
+                android:textSize="28sp" />
         </LinearLayout>
 
 
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/shc_bodl"
-                android:paddingStart="70dp"
+                android:paddingStart="65dp"
                 android:text="@string/Inventario"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/shc_bodl"
-                android:paddingStart="130dp"
+                android:paddingStart="120dp"
                 android:text="@string/Rutas"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
@@ -145,7 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/shc_bodl"
-                android:paddingStart="72dp"
+                android:paddingStart="80dp"
                 android:text="@string/Usuario"
                 android:textAlignment="textStart"
                 android:textColor="#FFFFFF"
@@ -153,11 +153,11 @@
 
             <TextView
                 android:id="@+id/textView7"
-                android:layout_width="wrap_content"
+                android:layout_width="222dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="60dp"
                 android:fontFamily="@font/shc_bodl"
-                android:paddingStart="135dp"
+                android:paddingStart="115dp"
                 android:text="@string/Entregas"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
