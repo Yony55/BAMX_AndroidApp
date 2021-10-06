@@ -16,5 +16,6 @@
     <string name="Entrega1">Entrega 1 - </string>
     <string name="Entrega2">Entrega 2 - </string>
     <string name="Entrega3">Entrega 3 - </string>
+    <string name="str_LogOut">Cerrar Sesión</string>
 
 </resources>

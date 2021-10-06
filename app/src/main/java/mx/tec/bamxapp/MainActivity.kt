@@ -1,6 +1,8 @@
 package mx.tec.bamxapp
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,9 +13,21 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+    lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+
+        if(sharedPreferences.getBoolean("logIn", false) == true){
+            val intent = Intent(this, MainMenu::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
+        if(sharedPreferences.getString("usuario", "@") != "@"){
+            edt_user.setText(sharedPreferences.getString("usuario", "@"))
+        }
 
         val logIn = findViewById<Button>(R.id.btn_login)
         logIn.setOnClickListener(this@MainActivity)
@@ -23,14 +37,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?){
         when (p0!!.id) {
             R.id.btn_login -> {
-                val key = ""
-                val user = ""
+                val key = "123"
+                val user = "Palencia"
                 println("Diste click al boton Login")
 
                 if(edt_user.text.toString() == user && edt_password.text.toString() == key){
                     val intent = Intent(this@MainActivity, MainMenu::class.java)
-                    intent.putExtra("User", edt_user.text.toString())
-                    intent.putExtra("Password", edt_password.text.toString())
+                    with(sharedPreferences.edit()){
+                        putString("usuario", edt_user.text.toString())
+                        putBoolean("logIn", true)
+                        commit()
+                    }
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
                     println("Datos correctos")
                 }
