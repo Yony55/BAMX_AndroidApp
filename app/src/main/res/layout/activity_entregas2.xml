@@ -3,11 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/drawerLayout"
+    tools:context=".Entregas2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/gris_bamx">
 
         <LinearLayout
             android:id="@+id/LinearLayout"
@@ -45,6 +48,9 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/rounded_corners"
             android:fontFamily="@font/omnes_semibold"
+            android:padding="10dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:text="@string/Entrega1"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +66,9 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/rounded_corners"
             android:fontFamily="@font/omnes_semibold"
+            android:padding="10dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:text="@string/Entrega2"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,6 +84,9 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/rounded_corners"
             android:fontFamily="@font/omnes_semibold"
+            android:padding="10dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:text="@string/Entrega3"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
