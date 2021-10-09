@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
 
 class Entregas : AppCompatActivity(), View.OnClickListener {
@@ -15,7 +14,7 @@ class Entregas : AppCompatActivity(), View.OnClickListener {
 
         val entregas = findViewById<Button>(R.id.btn_entregas_entregas)
         val inventario = findViewById<Button>(R.id.btn_entregas_inventario)
-        val back = findViewById<ImageButton>(R.id.btn_back_inventario)
+        val back = findViewById<ImageButton>(R.id.btn_back_inventarioLay)
 
         back.setOnClickListener(this@Entregas)
         entregas.setOnClickListener(this@Entregas)

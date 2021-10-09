@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/btn_back_inventario"
+                android:id="@+id/btn_back_inventarioLay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#00FFFFFF"
@@ -32,7 +32,7 @@
 
 
             <ImageView
-                android:id="@+id/imgMenu"
+                android:id="@+id/img_InvLay"
                 android:layout_width="82dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="116dp"
