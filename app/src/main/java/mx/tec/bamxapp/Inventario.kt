@@ -18,10 +18,19 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
 
         val back = findViewById<ImageButton>(R.id.btn_back_inventarioLay)
         val listSocio = findViewById<ListView>(R.id.list_Socios)
+
         val datosSocios = listOf(
-            Socio(R.drawable.superama, "Superama", "4544", "Manuel Ávila Camacho #606"),
+            Socio(R.drawable.superama, "Superama", "4544", "Manuel Ávila Camacho #606",),
+            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
+            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
+            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
+            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
+            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
+            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
             Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186")
         )
+
+
 
         back.setOnClickListener(this@Inventario)
 

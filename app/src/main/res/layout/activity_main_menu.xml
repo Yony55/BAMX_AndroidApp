@@ -51,7 +51,6 @@
                 android:layout_width="175dp"
                 android:layout_height="160dp"
                 android:background="@drawable/rounded_corners25"
-                android:backgroundTint="@color/light_grey"
                 android:padding="35px"
                 android:scaleType="centerInside"
                 app:srcCompat="@drawable/boxicon" />
@@ -62,7 +61,6 @@
                 android:layout_height="160dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/rounded_corners25"
-                android:backgroundTint="@color/light_grey"
                 android:padding="35px"
                 android:scaleType="centerInside"
                 app:srcCompat="@drawable/boxicon" />
@@ -114,10 +112,9 @@
                 android:layout_width="175dp"
                 android:layout_height="160dp"
                 android:background="@drawable/rounded_corners25"
-                android:backgroundTint="@color/light_grey"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/boxicon" />
+                app:srcCompat="@drawable/profile" />
 
             <ImageButton
                 android:id="@+id/btn_entregas"
@@ -125,10 +122,9 @@
                 android:layout_height="160dp"
                 android:layout_marginStart="20sp"
                 android:background="@drawable/rounded_corners25"
-                android:backgroundTint="@color/light_grey"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/boxicon" />
+                app:srcCompat="@drawable/truck" />
         </LinearLayout>
 
         <LinearLayout

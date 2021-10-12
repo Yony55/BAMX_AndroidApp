@@ -62,6 +62,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/omnes_bold"
             android:text="Andrick Landa"
+            android:textColor="#FFFFFF"
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

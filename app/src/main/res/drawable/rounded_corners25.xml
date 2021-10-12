@@ -5,9 +5,7 @@
         android:bottomRightRadius="35dp"
         android:radius="35dp"
         />
-
     <solid
-        android:color="@color/ultra_light_grey"/>
-
+        android:color="@color/light_grey"/>
 
 </shape>
