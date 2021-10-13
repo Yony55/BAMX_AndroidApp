@@ -61,9 +61,11 @@
                 android:layout_height="160dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/rounded_corners25"
-                android:padding="35px"
+                android:paddingLeft="30dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/boxicon" />
+                app:srcCompat="@drawable/maps" />
         </LinearLayout>
 
         <LinearLayout
@@ -114,7 +116,7 @@
                 android:background="@drawable/rounded_corners25"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/profile" />
+                app:srcCompat="@drawable/usuario" />
 
             <ImageButton
                 android:id="@+id/btn_entregas"
@@ -124,7 +126,7 @@
                 android:background="@drawable/rounded_corners25"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/truck" />
+                app:srcCompat="@drawable/mercedesbenz" />
         </LinearLayout>
 
         <LinearLayout

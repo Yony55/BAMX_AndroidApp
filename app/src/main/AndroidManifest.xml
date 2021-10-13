@@ -26,6 +26,22 @@
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar"/>
         <activity
+            android:name=".InventarioCompletado"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity
+            android:name=".InventarioConfirmar"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity
+            android:name=".InventarioFinalizar"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity
+            android:name=".Inventario2"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity
             android:name=".Inventario"
             android:exported="true"/>
         <activity

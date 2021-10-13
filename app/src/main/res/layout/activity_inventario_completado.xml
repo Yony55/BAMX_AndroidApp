@@ -2,8 +2,10 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".InventarioCompletado">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,32 +23,51 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/btn_back_inventario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/ic_back"></ImageButton>
-
 
             <ImageView
                 android:id="@+id/img_InvLay"
                 android:layout_width="82dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="116dp"
-                android:src="@drawable/mercedesbenz" />
+                android:src="@drawable/boxicon"
+                android:layout_marginStart="166dp"/>
+
+
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="136dp"
-            android:text="Inventario"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="224dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/omnes_semibold"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/Registro_completado"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LinearLayout" />
+
+        <Button
+            android:id="@+id/btn_inv_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/verde_bamx"
+            android:fontFamily="@font/omnes_semibold"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="@string/Menu"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.drawerlayout.widget.DrawerLayout>

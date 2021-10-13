@@ -13,7 +13,7 @@ class Usuario : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_usuario)
 
-        val back = findViewById<ImageButton>(R.id.btn_back_inventarioLay)
+        val back = findViewById<ImageButton>(R.id.btn_back_inventario)
         val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("usuario", "@")
 

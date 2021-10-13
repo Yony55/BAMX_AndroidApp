@@ -8,15 +8,19 @@
     tools:context=".Inventario">
 
     <!-- ToolBar/AppBarr -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/gris_bamx">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical" />
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        </LinearLayout>
 
 
         <LinearLayout
@@ -31,7 +35,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/btn_back_inventarioLay"
+                android:id="@+id/btn_back_inventario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#00FFFFFF"
@@ -47,6 +51,12 @@
                 android:layout_marginStart="116dp"
                 android:src="@drawable/boxicon" />
 
+            <Button
+                android:id="@+id/btn_inv_prueba"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Prueba xd" />
+
 
         </LinearLayout>
 
@@ -61,8 +71,9 @@
             android:paddingRight="10dp"
             android:divider="@null"
             android:paddingBottom="65dp"
-            android:paddingTop="10dp"
-           />
+            android:paddingTop="10dp">
+
+        </ListView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

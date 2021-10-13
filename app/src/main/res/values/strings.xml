@@ -18,5 +18,11 @@
     <string name="Entrega3">Entrega 3 - </string>
     <string name="str_LogOut">Cerrar Sesión</string>
     <string name="Email">Email</string>
+    <string name="Cantidad">Cantidad: </string>
+    <string name="Producto">Producto: </string>
+    <string name="Registro_completado">Registro completado con éxito</string>
+    <string name="Menu">Menú</string>
+    <string name="Finalizar">Finalizar</string>
+    <string name="Confirmar">Confirmar</string>
 
 </resources>

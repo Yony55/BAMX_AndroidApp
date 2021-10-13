@@ -24,11 +24,13 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/btn_back_inventarioLay"
+                android:id="@+id/btn_back_inventario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/ic_back"></ImageButton>
+                android:src="@drawable/ic_back">
+
+            </ImageButton>
 
 
             <ImageView
@@ -36,62 +38,23 @@
                 android:layout_width="82dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="116dp"
-                android:src="@drawable/silverado" />
+                android:src="@drawable/mercedesbenz" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_entrega1"
-            android:layout_width="wrap_content"
+        <ListView
+            android:id="@+id/list_entregas"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/rounded_corners"
-            android:fontFamily="@font/omnes_semibold"
-            android:padding="10dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:text="@string/Entrega1"
-            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LinearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/LinearLayout"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:divider="@null"
+            android:paddingBottom="65dp"
+            android:paddingTop="10dp">
 
-        <Button
-            android:id="@+id/btn_entrega"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/rounded_corners"
-            android:fontFamily="@font/omnes_semibold"
-            android:padding="10dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:text="@string/Entrega2"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_entrega1" />
-
-        <Button
-            android:id="@+id/btn_entrega2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/rounded_corners"
-            android:fontFamily="@font/omnes_semibold"
-            android:padding="10dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:text="@string/Entrega3"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_entrega" />
+        </ListView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
