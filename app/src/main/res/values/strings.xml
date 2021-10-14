@@ -29,5 +29,6 @@
     <string name="str_pan">Pan</string>
     <string name="str_nocomestible">No comestibles</string>
     <string name="str_preparada">Comida preparada</string>
+    <string name="strEnviar">Enviar</string>
 
 </resources>

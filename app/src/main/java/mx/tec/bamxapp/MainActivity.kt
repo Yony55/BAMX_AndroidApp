@@ -14,11 +14,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var sharedPreferences: SharedPreferences
+    lateinit var sharedPreferences1: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+        sharedPreferences1 = getSharedPreferences("Inventario", Context.MODE_PRIVATE)
 
         if(sharedPreferences.getBoolean("logIn", false) == true){
             val intent = Intent(this, MainMenu::class.java)

@@ -35,18 +35,202 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="116dp"
                 android:src="@drawable/mercedesbenz" />
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout10"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="136dp"
-            android:text="Inventario"
-            android:textSize="24sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/LinearLayout">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/Inventario"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+
+            <TextView
+                android:id="@+id/tv_entinv_aba"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/str_abarrotes"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_entinv_abacant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
+
+            <TextView
+                android:id="@+id/tv_entinv_fruta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/str_fruta"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_entinv_frutacant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+
+            <TextView
+                android:id="@+id/tv_entinv_pan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/str_pan"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_entinv_pancant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout14">
+
+            <TextView
+                android:id="@+id/tv_entinv_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/str_nocomestible"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_entinv_nocant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
+
+            <TextView
+                android:id="@+id/tv_entinv_comida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/str_preparada"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_entinv_comidacant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

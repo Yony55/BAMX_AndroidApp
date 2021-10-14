@@ -263,7 +263,7 @@
             android:background="@drawable/rounded_corners25"
             android:backgroundTint="@color/verde_bamx"
             android:fontFamily="@font/omnes_semibold"
-            android:text="prueba xd"
+            android:text="@string/strEnviar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
