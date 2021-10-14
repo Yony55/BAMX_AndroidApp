@@ -7,6 +7,7 @@ import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.ListView
 import mx.tec.bamxapp.model.Socio
 
@@ -19,7 +20,7 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
 
         val back = findViewById<ImageButton>(R.id.btn_back_inventario)
         val listSocio = findViewById<ListView>(R.id.list_Socios)
-        val prueba = findViewById<Button>(R.id.btn_inv_prueba)
+        //val prueba = findViewById<Button>(R.id.btn_inv_prueba)
 
         val datosSocios = listOf(
             Socio(R.drawable.superama, "Superama", "4544", "Manuel Ávila Camacho #606",),
@@ -34,7 +35,7 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
 
         
         back.setOnClickListener(this@Inventario)
-        prueba.setOnClickListener(this@Inventario)
+        //prueba.setOnClickListener(this@Inventario)
 
         back.setOnClickListener {
             print("Diste click a back")
@@ -43,14 +44,23 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
         }
 
         //Prueba JEJE
-        prueba.setOnClickListener {
-            print("Diste click a prueba")
-            val intent2 = Intent(this@Inventario, Inventario2::class.java)
-            startActivity(intent2)
-        }
+        //prueba.setOnClickListener {
+        //    print("Diste click a prueba")
+        //    val intent2 = Intent(this@Inventario, Inventario2::class.java)
+        //    startActivity(intent2)
+        //}
 
         val adapter = SocioAdapter(this, R.layout.socio_layout, datosSocios)
         listSocio.adapter = adapter
+
+        listSocio.setOnItemClickListener{parent, view, position, id ->
+            val intent = Intent(this, Inventario2::class.java)
+            intent.putExtra("Nombre", datosSocios[position].nombre)
+            intent.putExtra("Imagen", datosSocios[position].imagen)
+            intent.putExtra("Determinante", datosSocios[position].determinante)
+            intent.putExtra("Direccion", datosSocios[position].direccion)
+            startActivity(intent)
+        }
 
     }
 

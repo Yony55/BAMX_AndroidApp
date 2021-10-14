@@ -46,9 +46,9 @@
         <LinearLayout
             android:id="@+id/linearLayout6"
             android:layout_width="391dp"
-            android:layout_height="180dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_listview"
             android:orientation="vertical"
@@ -58,17 +58,12 @@
 
             <TextView
                 android:id="@+id/tv_inv_socio"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/omnes_medium"
+                android:fontFamily="@font/omnes_semibold"
                 android:text="Aurrera Plan de Ayala"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp" />
-
-            <Spinner
-                android:id="@+id/spn_tipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/tv_inv_producto"
@@ -80,28 +75,199 @@
                 android:textSize="28sp" />
 
             <TextView
-                android:id="@+id/tv_inv_cantidad"
+                android:id="@+id/tv_inv_dir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/omnes_semibold"
-                android:text="@string/Cantidad"
+                android:text="@string/Producto"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+            <TextView
+                android:id="@+id/tv_inv_abarrotes"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/str_abarrotes"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/tn_inv_abarrotes"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+            <TextView
+                android:id="@+id/tv_inv_fruta"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/str_fruta"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/tn_inv_fruta"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+            <TextView
+                android:id="@+id/tv_inv_pan"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/str_pan"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/tn_inv_pan"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+
+            <TextView
+                android:id="@+id/tv_inv_nocomes"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/str_nocomestible"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/tn_inv_nocomes"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_listview"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+            <TextView
+                android:id="@+id/tv_inv_comidaprep"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:fontFamily="@font/omnes_semibold"
+                android:text="@string/str_preparada"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/tn_inv_comidaprep"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_inv_prueba2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
             android:background="@drawable/rounded_corners25"
             android:backgroundTint="@color/verde_bamx"
             android:fontFamily="@font/omnes_semibold"
             android:text="prueba xd"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout11" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_inventario2.*
 
 
 class Inventario2 : AppCompatActivity(), View.OnClickListener{
@@ -16,7 +18,14 @@ class Inventario2 : AppCompatActivity(), View.OnClickListener{
 
         val back = findViewById<ImageButton>(R.id.btn_back_inventario)
         val prueba = findViewById<Button>(R.id.btn_inv_prueba2)
-
+        val imagen = intent.getIntExtra("Imagen", R.drawable.aurrera)
+        val nombre = intent.getStringExtra("Nombre")
+        val determinante = intent.getStringExtra("Determinante")
+        val direccion = intent.getStringExtra("Direccion")
+        //iv_inv_socio.setImageResource(imagen)
+        tv_inv_socio.text = nombre
+        tv_inv_producto.text = determinante
+        tv_inv_dir.text = direccion
         back.setOnClickListener(this@Inventario2)
         //Boton prueba JEJE
         prueba.setOnClickListener(this@Inventario2)

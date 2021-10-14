@@ -24,5 +24,10 @@
     <string name="Menu">Menú</string>
     <string name="Finalizar">Finalizar</string>
     <string name="Confirmar">Confirmar</string>
+    <string name="str_abarrotes">Abarrotes</string>
+    <string name="str_fruta">Fruta y verdura</string>
+    <string name="str_pan">Pan</string>
+    <string name="str_nocomestible">No comestibles</string>
+    <string name="str_preparada">Comida preparada</string>
 
 </resources>

@@ -51,12 +51,6 @@
                 android:layout_marginStart="116dp"
                 android:src="@drawable/boxicon" />
 
-            <Button
-                android:id="@+id/btn_inv_prueba"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Prueba xd" />
-
 
         </LinearLayout>
 
