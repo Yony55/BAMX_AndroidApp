@@ -40,7 +40,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,8 +48,8 @@
 
             <ImageButton
                 android:id="@+id/btn_inventario"
-                android:layout_width="175dp"
-                android:layout_height="160dp"
+                android:layout_width="165dp"
+                android:layout_height="150dp"
                 android:background="@drawable/rounded_corners25"
                 android:padding="35px"
                 android:scaleType="centerInside"
@@ -57,8 +57,8 @@
 
             <ImageButton
                 android:id="@+id/btn_rutas"
-                android:layout_width="175dp"
-                android:layout_height="160dp"
+                android:layout_width="165dp"
+                android:layout_height="150dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/rounded_corners25"
                 android:paddingLeft="30dp"
@@ -103,33 +103,34 @@
             android:id="@+id/linearLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <ImageButton
-                android:id="@+id/btn_usuario"
-                android:layout_width="175dp"
-                android:layout_height="160dp"
+                android:id="@+id/btn_recoleccion"
+                android:layout_width="165dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
                 android:background="@drawable/rounded_corners25"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/usuario" />
+                app:srcCompat="@drawable/superama"/>
 
             <ImageButton
                 android:id="@+id/btn_entregas"
-                android:layout_width="175dp"
-                android:layout_height="160dp"
+                android:layout_width="165dp"
+                android:layout_height="150dp"
                 android:layout_marginStart="20sp"
                 android:background="@drawable/rounded_corners25"
-                android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/mercedesbenz" />
+                app:srcCompat="@drawable/silverado" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -143,8 +144,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/shc_bodl"
-                android:paddingStart="80dp"
-                android:text="@string/Usuario"
+                android:paddingStart="47dp"
+                android:text="@string/Recolecciones"
                 android:textAlignment="textStart"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
@@ -155,11 +156,78 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="60dp"
                 android:fontFamily="@font/shc_bodl"
-                android:paddingStart="115dp"
+                android:paddingStart="82dp"
                 android:text="@string/Entregas"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout16">
+
+            <ImageButton
+                android:id="@+id/btn_usuario"
+                android:layout_width="165dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corners25"
+                android:padding="35px"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/usuario" />
+
+            <ImageButton
+                android:id="@+id/btn_vehiculo"
+                android:layout_width="165dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corners25"
+                android:padding="35px"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/mercedesbenz" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LinearLayoutNew">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="199dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/shc_bodl"
+                android:paddingStart="82dp"
+                android:text="@string/Usuario"
+                android:textAlignment="textStart"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="221dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="60dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/shc_bodl"
+                android:paddingStart="100dp"
+                android:text="@string/Vehiculo"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
 

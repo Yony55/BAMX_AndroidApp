@@ -32,7 +32,7 @@ class EntregasInventario: AppCompatActivity(), View.OnClickListener {
 
         back.setOnClickListener {
             print("Diste click a back")
-            val intent = Intent(this@EntregasInventario, Entregas::class.java)
+            val intent = Intent(this@EntregasInventario, Vehiculo::class.java)
             startActivity(intent)
         }
     }

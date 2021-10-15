@@ -14,6 +14,14 @@
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCJI21MhiubzPS76LyTTHR0yAOaYGmKcLc"/>
         <activity
+            android:name=".Recolecciones"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".Vehiculo"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
             android:name=".Rutas"
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar"/>

@@ -22,6 +22,8 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
         val rutas= findViewById<ImageButton>(R.id.btn_rutas)
         val usuario = findViewById<ImageButton>(R.id.btn_usuario)
         val entregas = findViewById<ImageButton>(R.id.btn_entregas)
+        val vehiculo = findViewById<ImageButton>(R.id.btn_vehiculo)
+        val recoleccion = findViewById<ImageButton>(R.id.btn_recoleccion)
         val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("usuario", "@")
 
@@ -31,6 +33,8 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
         rutas.setOnClickListener(this@MainMenu)
         usuario.setOnClickListener(this@MainMenu)
         entregas.setOnClickListener(this@MainMenu)
+        vehiculo.setOnClickListener(this@MainMenu)
+        recoleccion.setOnClickListener(this@MainMenu)
 
         inventario.setOnClickListener {
             print("Diste click a inventario")
@@ -49,12 +53,25 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
         }
         entregas.setOnClickListener {
             print("Diste click a Entregas")
-            val intent = Intent(this@MainMenu, Entregas::class.java)
+            val intent = Intent(this@MainMenu, Entregas2::class.java)
+            startActivity(intent)
+        }
+        vehiculo.setOnClickListener {
+            print("Diste click a Vehiculo")
+            val intent = Intent(this@MainMenu, Vehiculo::class.java)
+            startActivity(intent)
+        }
+        recoleccion.setOnClickListener {
+            print("Diste click a Recoleccion")
+            val intent = Intent(this@MainMenu, Recolecciones::class.java)
             startActivity(intent)
         }
     }
 
     override fun onClick(p0: View?) {
 
+    }
+    override fun onBackPressed() {
+        return
     }
 }

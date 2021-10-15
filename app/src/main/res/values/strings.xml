@@ -12,6 +12,7 @@
     <string name="Placas_Static">Placas:</string>
     <string name="Verificacion_Static">Verificación:</string>
     <string name="Poliza_Static">Poliza de Seguro:</string>
+    <string name="Poliza">Poliza:</string>
     <string name="Vigencia_licencia">Vigencia de licencia:</string>
     <string name="Entrega1">Entrega 1 - </string>
     <string name="Entrega2">Entrega 2 - </string>
@@ -31,6 +32,9 @@
     <string name="str_preparada">Comida preparada</string>
     <string name="strEnviar">Enviar</string>
     <string name="Recoleccion">Recolección</string>
+    <string name="Recolecciones">Recolecciones</string>
     <string name="Entrega">Entrega</string>
+    <string name="Vehiculo">Vehículo</string>
+    <string name="Aseguradora">Aseguradora:</string>
 
 </resources>

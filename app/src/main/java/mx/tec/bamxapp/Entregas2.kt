@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import mx.tec.bamxapp.model.Socio
+import mx.tec.bamxapp.model.Entrega
 
 class Entregas2: AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,26 +14,29 @@ class Entregas2: AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_entregas2)
 
         val back = findViewById<ImageButton>(R.id.btn_back_maps)
-        val list = findViewById<ListView>(R.id.list_entregas)
+        val listEntregas = findViewById<ListView>(R.id.list_entregas)
 
         back.setOnClickListener(this@Entregas2)
 
         val datosEntregas = listOf(
-            Socio(R.drawable.superama, "Superama", "4544", "Manuel Ávila Camacho #606",),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186")
+            Entrega("1", "BODEGA REFRIGERADOS", "C 21 ESTE 62500 CIVAC JIUTEPEC MORELOS",
+                "Frutas 10kg, Verduras 20kg, No comestibles 23kg, Pan 22kg, Comida preparada 20kg"),
+            Entrega("2", "BODEGA REFRIGERADOS", "C 21 ESTE 62500 CIVAC JIUTEPEC MORELOS",
+                "Frutas 10kg, Verduras 20kg, No comestibles 23kg, Pan 22kg, Comida preparada 20kg"),
+            Entrega("3", "BODEGA REFRIGERADOS", "C 21 ESTE 62500 CIVAC JIUTEPEC MORELOS",
+                "Frutas 10kg, Verduras 20kg, No comestibles 23kg, Pan 22kg, Comida preparada 20kg"),
+            Entrega("4", "BODEGA REFRIGERADOS", "C 21 ESTE 62500 CIVAC JIUTEPEC MORELOS",
+                "Frutas 10kg, Verduras 20kg, No comestibles 23kg, Pan 22kg, Comida preparada 20kg")
         )
 
         back.setOnClickListener {
             print("Diste click a back")
-            val intent = Intent(this@Entregas2, Entregas::class.java)
+            val intent = Intent(this@Entregas2, MainMenu::class.java)
             startActivity(intent)
         }
+
+        val adapter = EntregaAdapter(this, R.layout.entrega_layout, datosEntregas)
+        listEntregas.adapter = adapter
     }
 
     override fun onClick(p0: View?) {
