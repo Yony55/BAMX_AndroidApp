@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import mx.tec.bamxapp.model.Socio
+import mx.tec.bamxapp.model.Almacenes
 
-class SocioAdapter(val context: Context,
-                   val layout: Int,
-                   val dataSource: List<Socio>): BaseAdapter() {
+
+class AlmacenesAdapter (val context: Context,
+                        val layout: Int,
+                        val dataSource: List<Almacenes>): BaseAdapter() {
+
     override fun getCount(): Int {
         return dataSource.size
     }
@@ -24,18 +26,20 @@ class SocioAdapter(val context: Context,
         return p0.toLong()
     }
 
-    private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    private val inflater: LayoutInflater =
+        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
 
+
         val view = inflater.inflate(layout, p2, false)
-        val nombre = view.findViewById<TextView>(R.id.txt_NombreSocio)
-        val imagen = view.findViewById<ImageView>(R.id.img_SocioLay)
-        val determinante = view.findViewById<TextView>(R.id.txt_DeterSocio)
-        val direccion = view.findViewById<TextView>(R.id.txt_DirSocio)
-        val elemento = getItem(p0) as Socio
+        val nombre = view.findViewById<TextView>(R.id.tv_NombreAlmacen)
+        val imagen = view.findViewById<ImageView>(R.id.img_AlmacenLay)
+        val direccion = view.findViewById<TextView>(R.id.tv_DirAlmacen)
+
+        val elemento = getItem(p0) as Almacenes
         nombre.text = elemento.nombre
         imagen.setImageResource(elemento.imagen)
-        determinante.text = elemento.determinante
         direccion.text = elemento.direccion
         return view
     }

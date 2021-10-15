@@ -5,9 +5,7 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inventario">
-
-    <!-- ToolBar/AppBarr -->
+    tools:context=".InventarioEntregas">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,13 +13,10 @@
         android:background="@color/gris_bamx">
 
         <LinearLayout
-            android:id="@+id/linearLayout4"
+            android:id="@+id/linearLayout_inv_entregas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-        </LinearLayout>
-
+            android:orientation="vertical"></LinearLayout>
 
         <LinearLayout
             android:id="@+id/LinearLayout"
@@ -45,17 +40,16 @@
 
 
             <ImageView
-                android:id="@+id/img_InvLay"
+                android:id="@+id/img_Inv2"
                 android:layout_width="82dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="116dp"
                 android:src="@drawable/boxicon" />
 
-
         </LinearLayout>
 
         <ListView
-            android:id="@+id/list_Socios"
+            android:id="@+id/list_Almacenes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@null"

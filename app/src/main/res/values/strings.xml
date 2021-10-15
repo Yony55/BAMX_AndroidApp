@@ -30,5 +30,7 @@
     <string name="str_nocomestible">No comestibles</string>
     <string name="str_preparada">Comida preparada</string>
     <string name="strEnviar">Enviar</string>
+    <string name="Recoleccion">Recolección</string>
+    <string name="Entrega">Entrega</string>
 
 </resources>

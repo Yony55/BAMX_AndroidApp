@@ -34,7 +34,7 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
 
         inventario.setOnClickListener {
             print("Diste click a inventario")
-            val intent = Intent(this@MainMenu, Inventario::class.java)
+            val intent = Intent(this@MainMenu, InventarioOpciones::class.java)
             startActivity(intent)
         }
         //Falta implementar MAPS

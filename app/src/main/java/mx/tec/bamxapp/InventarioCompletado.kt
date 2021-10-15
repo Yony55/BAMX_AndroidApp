@@ -27,5 +27,7 @@ class InventarioCompletado : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
 
     }
-
+    override fun onBackPressed() {
+        return
+    }
 }

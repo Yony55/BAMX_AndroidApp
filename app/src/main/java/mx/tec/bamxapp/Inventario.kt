@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.Window
-import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.ListView
 import mx.tec.bamxapp.model.Socio
 
@@ -39,7 +37,7 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
 
         back.setOnClickListener {
             print("Diste click a back")
-            val intent = Intent(this@Inventario, MainMenu::class.java)
+            val intent = Intent(this@Inventario, InventarioOpciones::class.java)
             startActivity(intent)
         }
 
