@@ -11,9 +11,27 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.notkamui.keval.Keval
 import kotlinx.android.synthetic.main.activity_inventario2.*
+import kotlinx.android.synthetic.main.activity_inventario2.tn_inv_abarrotes
+import kotlinx.android.synthetic.main.activity_inventario2.tn_inv_comidaprep
+import kotlinx.android.synthetic.main.activity_inventario2.tn_inv_fruta
+import kotlinx.android.synthetic.main.activity_inventario2.tn_inv_nocomes
+import kotlinx.android.synthetic.main.activity_inventario2.tn_inv_pan
+import kotlinx.android.synthetic.main.activity_inventario2.tv_inv_dir
+import kotlinx.android.synthetic.main.activity_inventario2.tv_inv_socio
+import kotlinx.android.synthetic.main.activity_inventario_entregas2.*
 
 
 class Inventario2 : AppCompatActivity(), View.OnClickListener{
+    lateinit var newAba: String
+    lateinit var newFruta: String
+    lateinit var newPan: String
+    lateinit var newNo: String
+    lateinit var newComida: String
+    lateinit var abarrotesStr: String
+    lateinit var frutaStr: String
+    lateinit var panStr: String
+    lateinit var noStr: String
+    lateinit var comidaStr: String
     override fun onCreate(savedInstanceState: Bundle?) {
         val tipo = arrayOf("Fruta", "Verdura","Comida preparada", "Pan", "Abarrotes")
         super.onCreate(savedInstanceState)
@@ -58,21 +76,60 @@ class Inventario2 : AppCompatActivity(), View.OnClickListener{
 
         //Prueba JEJE
         prueba.setOnClickListener {
-            val abaStr = tn_inv_abarrotes.text
             val builder = AlertDialog.Builder(this@Inventario2)
+            if(tn_inv_abarrotes.text.toString() != ""){
+                newAba = Keval.eval(cantAbarrotes + "+" + tn_inv_abarrotes.text.toString()).toString()
+                abarrotesStr = tn_inv_abarrotes.text.toString()
+            } else{
+                if (cantAbarrotes != null) {
+                    newAba = cantAbarrotes
+                    abarrotesStr = "0"
+                }
+            }
+            if(tn_inv_fruta.text.toString() != ""){
+                newFruta = Keval.eval(cantFruta + "+" + tn_inv_fruta.text.toString()).toString()
+                frutaStr = tn_inv_fruta.text.toString()
+            } else{
+                if (cantFruta != null) {
+                    newFruta = cantFruta
+                    frutaStr = "0"
+                }
+            }
+            if(tn_inv_pan.text.toString() != ""){
+                newPan = Keval.eval(cantPan + "+" + tn_inv_pan.text.toString()).toString()
+                panStr = tn_inv_pan.text.toString()
+            } else{
+                if (cantPan != null) {
+                    newPan = cantPan
+                    panStr = "0"
+                }
+            }
+            if(tn_inv_nocomes.text.toString() != ""){
+                newNo = Keval.eval(cantNo + "+" + tn_inv_nocomes.text.toString()).toString()
+                noStr = tn_inv_nocomes.text.toString()
+            } else{
+                if (cantNo != null) {
+                    newNo = cantNo
+                    noStr = "0"
+                }
+            }
+            if(tn_inv_comidaprep.text.toString() != ""){
+                newComida = Keval.eval(cantComida + "+" + tn_inv_comidaprep.text.toString()).toString()
+                comidaStr = tn_inv_comidaprep.text.toString()
+            } else{
+                if (cantComida != null) {
+                    newComida = cantComida
+                    comidaStr = "0"
+                }
+            }
             builder.setTitle("Confirmar inventario")
-                .setMessage("Abarrotes: ${tn_inv_abarrotes.text} kg\n" +
-                "Fruta y verdura: ${tn_inv_fruta.text} kg\n" +
-                "Pan: ${tn_inv_pan.text} kg\n" +
-                "No comestibles: ${tn_inv_nocomes.text} kg\n" +
-                "Comida preparada: ${tn_inv_comidaprep.text} kg\n")
+                .setMessage("Abarrotes: ${abarrotesStr} kg\n" +
+                "Fruta y verdura: ${frutaStr} kg\n" +
+                "Pan: ${panStr} kg\n" +
+                "No comestibles: ${noStr} kg\n" +
+                "Comida preparada: ${comidaStr} kg\n")
                 .setPositiveButton("Confirmar"){dialog, button ->
                     val intent = Intent(this@Inventario2, InventarioCompletado::class.java)
-                    val newAba = Keval.eval(cantAbarrotes + "+" + tn_inv_abarrotes.text.toString()).toString()
-                    val newFruta = Keval.eval(cantFruta + "+" + tn_inv_fruta.text.toString()).toString()
-                    val newPan = Keval.eval(cantPan + "+" + tn_inv_pan.text.toString()).toString()
-                    val newNo = Keval.eval(cantNo + "+" + tn_inv_nocomes.text.toString()).toString()
-                    val newComida = Keval.eval(cantComida + "+" + tn_inv_comidaprep.text.toString()).toString()
                     with(inventarioPreferences.edit()){
                         putString("Abarrotes", newAba)
                         putString("Frutas", newFruta)
