@@ -5,12 +5,15 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InventarioFinalizar">
+    tools:context=".Rutas">
+
+    <!-- ToolBar/AppBarr -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/gris_bamx">
+
 
         <LinearLayout
             android:id="@+id/LinearLayout"
@@ -24,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/btn_back_maps"
+                android:id="@+id/btn_back_maps1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#00FFFFFF"
@@ -32,29 +35,40 @@
 
             </ImageButton>
 
-
             <ImageView
                 android:id="@+id/img_InvLay"
                 android:layout_width="82dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="116dp"
-                android:src="@drawable/boxicon" />
-
-            <Button
-                android:id="@+id/btn_inv_confirmar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:background="@drawable/rounded_corners"
-                android:backgroundTint="@color/verde_bamx"
-                android:fontFamily="@font/omnes_semibold"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="@string/Finalizar"
-                android:textSize="18sp" />
+                android:src="@drawable/maps" />
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LinearLayout">
+
+            <fragment
+                android:id="@+id/mapFragment"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LinearLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

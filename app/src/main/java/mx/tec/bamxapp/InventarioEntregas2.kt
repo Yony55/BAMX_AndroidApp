@@ -38,7 +38,7 @@ class InventarioEntregas2: AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_inventario_entregas2)
 
         val inventarioPreferences = getSharedPreferences("Inventario", Context.MODE_PRIVATE)
-        val back = findViewById<ImageButton>(R.id.btn_back_inventario)
+        val back = findViewById<ImageButton>(R.id.btn_back_maps)
         val prueba = findViewById<Button>(R.id.btn_inv_prueba2)
         val imagen = intent.getIntExtra("Imagen", R.drawable.aurrera)
         val nombre = intent.getStringExtra("Nombre")

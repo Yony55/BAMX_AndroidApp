@@ -37,12 +37,11 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this@MainMenu, InventarioOpciones::class.java)
             startActivity(intent)
         }
-        //Falta implementar MAPS
-//        rutas.setOnClickListener {
-//            print("Diste click a inventario")
-//            val intent = Intent(this@MainMenu, Rutas::class.java)
-//            startActivity(intent)
-//        }
+        rutas.setOnClickListener {
+            print("Diste click a inventario")
+            val intent = Intent(this@MainMenu, Rutas::class.java)
+            startActivity(intent)
+        }
         usuario.setOnClickListener {
             print("Diste click a Usuario")
             val intent = Intent(this@MainMenu, Usuario::class.java)

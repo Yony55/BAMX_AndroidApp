@@ -13,7 +13,7 @@ class Entregas2: AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_entregas2)
 
-        val back = findViewById<ImageButton>(R.id.btn_back_inventario)
+        val back = findViewById<ImageButton>(R.id.btn_back_maps)
         val list = findViewById<ListView>(R.id.list_entregas)
 
         back.setOnClickListener(this@Entregas2)

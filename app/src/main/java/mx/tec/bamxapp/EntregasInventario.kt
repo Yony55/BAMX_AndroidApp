@@ -13,7 +13,7 @@ class EntregasInventario: AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_entregasinventario)
 
-        val back = findViewById<ImageButton>(R.id.btn_back_inventario)
+        val back = findViewById<ImageButton>(R.id.btn_back_maps)
         val inventarioPreferences = getSharedPreferences("Inventario", Context.MODE_PRIVATE)
         val cantAbarrotes = inventarioPreferences.getString("Abarrotes", "0") + " kg"
         val cantFruta = inventarioPreferences.getString("Frutas", "0") + " kg"

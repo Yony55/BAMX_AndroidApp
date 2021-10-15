@@ -14,7 +14,7 @@ class Entregas : AppCompatActivity(), View.OnClickListener {
 
         val entregas = findViewById<Button>(R.id.btn_entregas_entregas)
         val inventario = findViewById<Button>(R.id.btn_entregas_inventario)
-        val back = findViewById<ImageButton>(R.id.btn_back_inventario)
+        val back = findViewById<ImageButton>(R.id.btn_back_maps)
 
         back.setOnClickListener(this@Entregas)
         entregas.setOnClickListener(this@Entregas)

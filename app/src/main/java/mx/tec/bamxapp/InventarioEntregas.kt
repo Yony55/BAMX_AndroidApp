@@ -3,7 +3,6 @@ package mx.tec.bamxapp
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.Window
 import android.widget.ImageButton
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +16,7 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_inventario_entregas)
 
 
-        val back = findViewById<ImageButton>(R.id.btn_back_inventario)
+        val back = findViewById<ImageButton>(R.id.btn_back_maps)
         val listAlmacenes = findViewById<ListView>(R.id.list_Almacenes)
 
         val datosAlmacenes = listOf(

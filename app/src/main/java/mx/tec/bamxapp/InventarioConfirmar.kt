@@ -6,14 +6,13 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import mx.tec.bamxapp.InventarioCompletado
 
 class InventarioConfirmar : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventario_confirmar)
 
-        val back = findViewById<ImageButton>(R.id.btn_back_inventario)
+        val back = findViewById<ImageButton>(R.id.btn_back_maps)
         val confirmar = findViewById<Button>(R.id.btn_inv_confirmar)
         back.setOnClickListener(this@InventarioConfirmar)
         confirmar.setOnClickListener(this@InventarioConfirmar)
