@@ -16,20 +16,49 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 class Rutas : AppCompatActivity(), LocationListener {
     lateinit var locationManager: LocationManager
-    lateinit var txtLocation: TextView
+    lateinit var map: GoogleMap
+    //lateinit var txtLocation: TextView
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rutas)
 
+        val listOfLocations = listOf(
+            LatLng(18.9365141, -99.2474205),
+            LatLng(18.9223617, -99.2129684),
+            LatLng(18.934398, -99.1975317),
+            LatLng(18.9328423, -99.229588),
+            LatLng(18.9335512, -99.2188406),
+            LatLng(18.920793, -99.1999568),
+            LatLng(18.9536334, -99.245508),
+            LatLng(18.9334435, -99.2304862)
+        )
+
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        txtLocation = findViewById(R.id.txt_location)
+        //txtLocation = findViewById(R.id.txt_location)
         val back = findViewById<ImageButton>(R.id.btn_back_maps1)
 
         checkPermissions(this)
+
+        var mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+
+        mapFragment.getMapAsync{ googleMap ->
+            map = googleMap
+            map.isMyLocationEnabled = true
+
+            for(i in listOfLocations.indices){
+                val location = listOfLocations[i]
+                map.addMarker(MarkerOptions().position(location))
+            }
+        }
 
         back.setOnClickListener{
             val intent = Intent(this, MainMenu::class.java)
@@ -39,14 +68,14 @@ class Rutas : AppCompatActivity(), LocationListener {
     }
 
     override fun onLocationChanged(p0: Location) {
-        txtLocation.text = "Latitud ${p0.latitude}\nLongitud: ${p0.longitude}"
+        //txtLocation.text = "Latitud ${p0.latitude}\nLongitud: ${p0.longitude}"
     }
 
     private fun checkPermissions(context: Activity){
         if(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             if(ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission.ACCESS_FINE_LOCATION)){
                 val builder = AlertDialog.Builder(context)
-                builder.setTitle("Servicio de unicación requerido")
+                builder.setTitle("Servicio de ubicación requerido")
                     .setMessage("El acceso a la ubicación es requerido para utilizar la aplicación.")
                     .setPositiveButton("Entendido"){ _, _ ->
                         ActivityCompat.requestPermissions(context,
@@ -74,7 +103,7 @@ class Rutas : AppCompatActivity(), LocationListener {
         when(requestCode){
             69 -> {
                 if(grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    // no se
+                    //ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 420)
                 } else{
                     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1f, this@Rutas)
                 }

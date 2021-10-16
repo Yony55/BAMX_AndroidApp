@@ -53,7 +53,7 @@
                 android:background="@drawable/rounded_corners25"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/boxicon" />
+                app:srcCompat="@drawable/deliveryicon" />
 
             <ImageButton
                 android:id="@+id/btn_rutas"
@@ -65,7 +65,7 @@
                 android:paddingRight="15dp"
                 android:paddingBottom="15dp"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/maps" />
+                app:srcCompat="@drawable/mapicon" />
         </LinearLayout>
 
         <LinearLayout
@@ -117,7 +117,7 @@
                 android:background="@drawable/rounded_corners25"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/superama"/>
+                app:srcCompat="@drawable/boxicon" />
 
             <ImageButton
                 android:id="@+id/btn_entregas"
@@ -126,7 +126,7 @@
                 android:layout_marginStart="20sp"
                 android:background="@drawable/rounded_corners25"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/silverado" />
+                app:srcCompat="@drawable/deliverytruckicon" />
         </LinearLayout>
 
         <LinearLayout
@@ -180,7 +180,7 @@
                 android:background="@drawable/rounded_corners25"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/usuario" />
+                app:srcCompat="@drawable/profile" />
 
             <ImageButton
                 android:id="@+id/btn_vehiculo"
@@ -191,7 +191,7 @@
                 android:background="@drawable/rounded_corners25"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/mercedesbenz" />
+                app:srcCompat="@drawable/pickuptruckicon" />
         </LinearLayout>
 
         <LinearLayout

@@ -23,12 +23,12 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
         val datosSocios = listOf(
             Socio(R.drawable.superama, "Superama", "4544", "Manuel Ávila Camacho #606",),
             Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186"),
-            Socio(R.drawable.aurrera, "Bodega Aurrera", "3869", "Av. Cuauhtémoc #186")
+            Socio(R.drawable.lacomer, "La Comer", "163", "Enrique Flores Magón #27"),
+            Socio(R.drawable.fresko, "Fresko", "412", "Río Balsas #102"),
+            Socio(R.drawable.citymarket, "City Market", "418", "Río Yaqui #28"),
+            Socio(R.drawable.chedraui, "Chedraui", "238", "Paseo Cuauhnáhuac #16"),
+            Socio(R.drawable.kfc, "KFC", "324", "Av. Emiliano Zapata #801"),
+            Socio(R.drawable.alboa, "Alboa", "s/n", "CC Bugambilia Plaza / Río Balsas s/n")
         )
 
         
