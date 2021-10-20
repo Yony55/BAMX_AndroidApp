@@ -2,11 +2,21 @@ package mx.tec.bamxapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import mx.tec.bamxapp.model.Almacen
 import mx.tec.bamxapp.model.Almacenes
+import mx.tec.bamxapp.model.Entrega
+import mx.tec.bamxapp.model.EntregasAlmacen
+import mx.tec.bamxapp.service.APIEntregasAlmacen
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
@@ -16,35 +26,49 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_inventario_entregas)
 
 
-        val back = findViewById<ImageButton>(R.id.btn_back_maps)
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        var datosAlmacenesRetro: EntregasAlmacen
         val listAlmacenes = findViewById<ListView>(R.id.list_Almacenes)
+        var adapter: AlmacenesAdapter
+        val almacenesArray = mutableListOf<Almacenes>()
 
-        val datosAlmacenes = listOf(
-            Almacenes(R.drawable.boxicon, "BODEGA TLAHUAPAN", "PALMA REAL, CP 62553 TLAHUAPAN JIUTEPEC MORELOS"),
-            Almacenes(R.drawable.boxicon, "Almacen Cuernavaca", "Plan de Ayala #45"),
-            Almacenes(R.drawable.boxicon, "BODEGA REFRIGERADOS", "C 21 ESTE 62500 CIVAC JIUTEPEC MORELOS"),
-            Almacenes(R.drawable.boxicon, "Banco de Alimentos TEMIXCO", "PLUTARCO ELIAS CALLES #99 C.P. 62580 TEMIXCO CENTRO, MORELOS"),
-            Almacenes(R.drawable.boxicon, "Banco de Alimentos TEMIXCO", "PLUTARCO ELIAS CALLES #99 C.P. 62580 TEMIXCO CENTRO, MORELOS")
+        val service = retrofit.create<APIEntregasAlmacen>(APIEntregasAlmacen::class.java)
+        service.getEntregas(1).enqueue(object: Callback<EntregasAlmacen> {
+            override fun onResponse(
+                call: Call<EntregasAlmacen>,
+                response: Response<EntregasAlmacen>
+            ) {
+                datosAlmacenesRetro = response.body()!!
+                for(i in datosAlmacenesRetro.data.indices){
+                    val temp = Almacenes(R.drawable.boxicon,
+                        datosAlmacenesRetro.data[i].bodega,
+                        datosAlmacenesRetro.data[i].direccion)
+                    almacenesArray.add(temp)
+                }
+                adapter = AlmacenesAdapter(this@InventarioEntregas, R.layout.almacen_layout, almacenesArray)
+                listAlmacenes.adapter = adapter
+            }
 
-        )
+            override fun onFailure(call: Call<EntregasAlmacen>, t: Throwable) {
+                Log.e("RetrofitError", t.message!!)
+            }
 
+        })
+
+
+        //////////////
+
+
+        val back = findViewById<ImageButton>(R.id.btn_back_maps)
 
         back.setOnClickListener {
             print("Diste click a back")
             val intent = Intent(this@InventarioEntregas, InventarioOpciones::class.java)
             startActivity(intent)
-        }
-
-        val adapter = AlmacenesAdapter(this, R.layout.almacen_layout, datosAlmacenes)
-        listAlmacenes.adapter = adapter
-
-        listAlmacenes.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(this, InventarioEntregas2::class.java)
-            intent.putExtra("Nombre", datosAlmacenes[position].nombre)
-            intent.putExtra("Imagen", datosAlmacenes[position].imagen)
-            intent.putExtra("Direccion", datosAlmacenes[position].direccion)
-            startActivity(intent)
-
         }
     }
 

@@ -39,9 +39,9 @@ class RecoleccionAdapter(
         val descripcion = view.findViewById<TextView>(R.id.tv_descripcion)
         val elemento = getItem(p0) as Recoleccion
 
-        numEntrega.text = elemento.numRecoleccion
+        numEntrega.text = elemento.numRecoleccion.toString()
         socio.text = elemento.socio
-        determinante.text = elemento.determinate
+        determinante.text = elemento.determinante
         direccion.text = elemento.direccion
         descripcion.text = elemento.descripcion
 

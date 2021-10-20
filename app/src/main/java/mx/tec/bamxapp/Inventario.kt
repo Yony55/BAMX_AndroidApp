@@ -18,7 +18,6 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
 
         val back = findViewById<ImageButton>(R.id.btn_back_maps)
         val listSocio = findViewById<ListView>(R.id.list_Socios)
-        //val prueba = findViewById<Button>(R.id.btn_inv_prueba)
 
         val datosSocios = listOf(
             Socio(R.drawable.superama, "Superama", "4544", "Manuel Ávila Camacho #606",),
