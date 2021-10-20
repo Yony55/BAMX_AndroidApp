@@ -3,11 +3,18 @@ package mx.tec.bamxapp
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.notkamui.keval.Keval
 import kotlinx.android.synthetic.main.activity_inventario2.*
 import kotlinx.android.synthetic.main.activity_inventario_entregas2.*
@@ -18,21 +25,29 @@ import kotlinx.android.synthetic.main.activity_inventario_entregas2.tn_inv_nocom
 import kotlinx.android.synthetic.main.activity_inventario_entregas2.tn_inv_pan
 import kotlinx.android.synthetic.main.activity_inventario_entregas2.tv_inv_dir
 import kotlinx.android.synthetic.main.activity_inventario_entregas2.tv_inv_socio
+import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 
 
 class InventarioEntregas2: AppCompatActivity(), View.OnClickListener {
-
+    lateinit var queue: RequestQueue
+    lateinit var postFruta: String
+    lateinit var postAba: String
+    lateinit var postnoComes: String
+    lateinit var postPan: String
+    lateinit var postComida: String
+    lateinit var newAba: String
+    lateinit var newFruta: String
+    lateinit var newPan: String
+    lateinit var newNo: String
+    lateinit var newComida: String
+    lateinit var abarrotesStr: String
+    lateinit var frutaStr: String
+    lateinit var panStr: String
+    lateinit var noStr: String
+    lateinit var comidaStr: String
     override fun onCreate(savedInstanceState: Bundle?) {
-        lateinit var newAba: String
-        lateinit var newFruta: String
-        lateinit var newPan: String
-        lateinit var newNo: String
-        lateinit var newComida: String
-        lateinit var abarrotesStr: String
-        lateinit var frutaStr: String
-        lateinit var panStr: String
-        lateinit var noStr: String
-        lateinit var comidaStr: String
+
         val tipo = arrayOf("Fruta", "Verdura","Comida preparada", "Pan", "Abarrotes")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventario_entregas2)
@@ -48,6 +63,7 @@ class InventarioEntregas2: AppCompatActivity(), View.OnClickListener {
         val cantPan = inventarioPreferences.getString("Pan", "0")
         val cantNo = inventarioPreferences.getString("NoComes", "0")
         val cantComida = inventarioPreferences.getString("Comida", "0")
+        val id = intent.getIntExtra("id", 0)
         //iv_inv_socio.setImageResource(imagen)
         tv_inv_socio.text = nombre
         tv_inv_dir.text = direccion
@@ -76,48 +92,58 @@ class InventarioEntregas2: AppCompatActivity(), View.OnClickListener {
         prueba.setOnClickListener {
             val builder = AlertDialog.Builder(this@InventarioEntregas2)
             if(tn_inv_abarrotes.text.toString() != ""){
+                postAba = "${tn_inv_abarrotes.text} kg"
                 newAba = Keval.eval(cantAbarrotes + "-" + tn_inv_abarrotes.text.toString()).toString()
                 abarrotesStr = tn_inv_abarrotes.text.toString()
             } else{
                 if (cantAbarrotes != null) {
                     newAba = cantAbarrotes
                     abarrotesStr = "0"
+                    postAba = "0 kg"
                 }
             }
             if(tn_inv_fruta.text.toString() != ""){
+                postFruta = "${tn_inv_fruta.text} kg"
                 newFruta = Keval.eval(cantFruta + "-" + tn_inv_fruta.text.toString()).toString()
                 frutaStr = tn_inv_fruta.text.toString()
             } else{
                 if (cantFruta != null) {
                     newFruta = cantFruta
                     frutaStr = "0"
+                    postFruta = "0 kg"
                 }
             }
             if(tn_inv_pan.text.toString() != ""){
+                postPan = "${tn_inv_pan.text} kg"
                 newPan = Keval.eval(cantPan + "-" + tn_inv_pan.text.toString()).toString()
                 panStr = tn_inv_pan.text.toString()
             } else{
                 if (cantPan != null) {
                     newPan = cantPan
                     panStr = "0"
+                    postPan = "0 kg"
                 }
             }
             if(tn_inv_nocomes.text.toString() != ""){
+                postnoComes = "${tn_inv_nocomes.text} kg"
                 newNo = Keval.eval(cantNo + "-" + tn_inv_nocomes.text.toString()).toString()
                 noStr = tn_inv_nocomes.text.toString()
             } else{
                 if (cantNo != null) {
                     newNo = cantNo
                     noStr = "0"
+                    postnoComes = "0 kg"
                 }
             }
             if(tn_inv_comidaprep.text.toString() != ""){
+                postComida = "${tn_inv_comidaprep.text} kg"
                 newComida = Keval.eval(cantComida + "-" + tn_inv_comidaprep.text.toString()).toString()
                 comidaStr = tn_inv_comidaprep.text.toString()
             } else{
                 if (cantComida != null) {
                     newComida = cantComida
                     comidaStr = "0"
+                    postComida = "0 kg"
                 }
             }
             builder.setTitle("Confirmar inventario")
@@ -127,7 +153,6 @@ class InventarioEntregas2: AppCompatActivity(), View.OnClickListener {
                         "No comestibles: ${noStr} kg\n" +
                         "Comida preparada: ${comidaStr} kg\n")
                 .setPositiveButton("Confirmar"){dialog, button ->
-                    val intent = Intent(this@InventarioEntregas2, InventarioCompletado::class.java)
                     with(inventarioPreferences.edit()){
                         putString("Abarrotes", newAba)
                         putString("Frutas", newFruta)
@@ -136,15 +161,41 @@ class InventarioEntregas2: AppCompatActivity(), View.OnClickListener {
                         putString("Comida", newComida)
                         commit()
                     }
+                    queue = Volley.newRequestQueue(this)
+                    val registroBodega = JSONObject()
+                    registroBodega.put("route_id", 1)
+                    registroBodega.put("bodega_id", id)
+                    registroBodega.put("abarrotesStr", "${postAba}")
+                    registroBodega.put("frutaStr", "${postFruta}")
+                    registroBodega.put("panStr", "${postPan}")
+                    registroBodega.put("noStr", "${postnoComes}")
+                    registroBodega.put("comidaStr", "${postComida}")
+
+                    val recoleccionRequest = JsonObjectRequest(
+                        Request.Method.POST,
+                        "http://bamx.denissereginagarcia.com/public/api/raw-item",
+                        registroBodega,
+                        Response.Listener { response ->
+                            Log.e("VolleyResponseTrue", response.toString())
+                            val intent = Intent(this@InventarioEntregas2, InventarioCompletado::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                        },
+                        { error ->
+                            Log.e("VolleyResponse", error.toString())
+                            edt_password.setText("")
+                            println("Datos Incorrectos")
+                            Toast.makeText(this@InventarioEntregas2, "Datos Incorrectos", Toast.LENGTH_SHORT).show()
+                        }
+                    )
+                    queue.add(recoleccionRequest)
                     //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
                 }
                 .setNegativeButton("Cancelar"){dialog, button ->
                     dialog.dismiss()
                 }
                 .show()
         }
-
     }
 
     override fun onClick(p0: View?) {

@@ -18,15 +18,18 @@ class Usuario : AppCompatActivity(), View.OnClickListener {
         val back = findViewById<ImageButton>(R.id.btn_back_maps)
         val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("nombre", "@")
+        val lastname = sharedPreferences.getString("apellido", "@")
         val dob = sharedPreferences.getString("dob", "@")
+        val licence = sharedPreferences.getString("licence", "@")
         val year = dob?.substring(0, 4)?.toInt()
         val month = dob?.substring(5, 7)?.toInt()
         val day = dob?.substring(8, 10)?.toInt()
 
         val age = getAge(year!!, month!!, day!!)
 
-        tv_usuario_nombre.text = "$username"
+        tv_usuario_nombre.text = "$username $lastname"
         tv_usuario_anios.text = "${age} años"
+        tv_usuario_fecha.text = "$licence"
 
         back.setOnClickListener(this@Usuario)
 

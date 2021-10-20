@@ -12,23 +12,70 @@ import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
+import android.widget.ListView
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import mx.tec.bamxapp.model.RecoleccionesRetrofit
+import mx.tec.bamxapp.model.Socio
+import mx.tec.bamxapp.service.APIRecolecciones
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class Rutas : AppCompatActivity(), LocationListener {
     lateinit var locationManager: LocationManager
     lateinit var map: GoogleMap
+    lateinit var currentLocation: LatLng
     //lateinit var txtLocation: TextView
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rutas)
+
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        var datosSociosMaps: RecoleccionesRetrofit
+        val locationArray = mutableListOf<LatLng>()
+        val namesArray = mutableListOf<String>()
+
+        val service = retrofit.create<APIRecolecciones>(APIRecolecciones::class.java)
+        service.getRecolecciones(1).enqueue(object: Callback<RecoleccionesRetrofit> {
+            override fun onResponse(
+                call: Call<RecoleccionesRetrofit>,
+                response: Response<RecoleccionesRetrofit>
+            ) {
+                datosSociosMaps = response.body()!!
+                for(i in datosSociosMaps.data.indices){
+                    val lati = datosSociosMaps.data[i].latitude.toDouble()
+                    val long = datosSociosMaps.data[i].longitude.toDouble()
+                    locationArray.add(LatLng(lati, long))
+                    namesArray.add(datosSociosMaps.data[i].socio)
+                }
+            }
+
+            override fun onFailure(call: Call<RecoleccionesRetrofit>, t: Throwable) {
+                Log.e("RetrofitError", t.message!!)
+            }
+
+        })
+
+        /////////////
+
+
+
 
         val listOfLocations = listOf(
             LatLng(18.9365141, -99.2474205),
@@ -40,6 +87,8 @@ class Rutas : AppCompatActivity(), LocationListener {
             LatLng(18.9536334, -99.245508),
             LatLng(18.9334435, -99.2304862)
         )
+
+
 
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
@@ -54,9 +103,11 @@ class Rutas : AppCompatActivity(), LocationListener {
             map = googleMap
             map.isMyLocationEnabled = true
 
-            for(i in listOfLocations.indices){
-                val location = listOfLocations[i]
-                map.addMarker(MarkerOptions().position(location))
+            for(i in locationArray.indices){
+                val location = locationArray[i]
+                map.addMarker(MarkerOptions()
+                    .position(location)
+                    .title(namesArray[i]))
             }
         }
 
@@ -69,6 +120,7 @@ class Rutas : AppCompatActivity(), LocationListener {
 
     override fun onLocationChanged(p0: Location) {
         //txtLocation.text = "Latitud ${p0.latitude}\nLongitud: ${p0.longitude}"
+        currentLocation = LatLng(p0.latitude, p0.longitude)
     }
 
     private fun checkPermissions(context: Activity){
@@ -109,6 +161,10 @@ class Rutas : AppCompatActivity(), LocationListener {
                 }
             }
         }
+    }
+
+    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+        //super.onStatusChanged(provider, status, extras)
     }
 
 }

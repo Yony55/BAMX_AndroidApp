@@ -46,7 +46,8 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
                 for(i in datosAlmacenesRetro.data.indices){
                     val temp = Almacenes(R.drawable.boxicon,
                         datosAlmacenesRetro.data[i].bodega,
-                        datosAlmacenesRetro.data[i].direccion)
+                        datosAlmacenesRetro.data[i].direccion,
+                    datosAlmacenesRetro.data[i].bodega_id)
                     almacenesArray.add(temp)
                 }
                 adapter = AlmacenesAdapter(this@InventarioEntregas, R.layout.almacen_layout, almacenesArray)
@@ -64,6 +65,7 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
             intent.putExtra("Nombre", almacenesArray[position].nombre)
             intent.putExtra("Imagen", almacenesArray[position].imagen)
             intent.putExtra("Direccion", almacenesArray[position].direccion)
+            intent.putExtra("id", almacenesArray[position].id)
             startActivity(intent)
         }
 

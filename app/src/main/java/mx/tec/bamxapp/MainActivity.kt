@@ -88,8 +88,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val intent = Intent(this@MainActivity, MainMenu::class.java)
                 with(sharedPreferences.edit()){
                     putString("nombre", response.getString("name"))
+                    putString("apellido", response.getString("first_lastname"))
                     putString("email", response.getString("email"))
                     putString("dob", response.getString("date_of_birth"))
+                    putString("licence", response.getString("license_vigency"))
                     putBoolean("logIn", true)
                     commit()
                 }

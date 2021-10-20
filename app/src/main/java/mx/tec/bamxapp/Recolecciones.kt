@@ -55,9 +55,12 @@ class Recolecciones:AppCompatActivity(), View.OnClickListener {
                 for(i in datosInventarioRetrofit.data.indices){
                     val temp = Recoleccion(datosInventarioRetrofit.data[i].numRecoleccion,
                     datosInventarioRetrofit.data[i].socio,
+                        datosInventarioRetrofit.data[i].socio_id,
                     datosInventarioRetrofit.data[i].determinante,
                     datosInventarioRetrofit.data[i].direccion,
-                    datosInventarioRetrofit.data[i].descripcion)
+                    datosInventarioRetrofit.data[i].descripcion,
+                    datosInventarioRetrofit.data[i].latitude,
+                    datosInventarioRetrofit.data[i].longitude)
                     almacenesArray.add(temp)
                 }
                 adapter = RecoleccionAdapter(this@Recolecciones, R.layout.recoleccion_layout, almacenesArray)
