@@ -36,7 +36,7 @@
                 android:layout_width="82dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="116dp"
-                android:src="@drawable/usuario" />
+                android:src="@drawable/profile" />
 
 
         </LinearLayout>

@@ -40,7 +40,7 @@
                 android:layout_width="82dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="116dp"
-                android:src="@drawable/maps" />
+                android:src="@drawable/mapicon" />
 
 
         </LinearLayout>

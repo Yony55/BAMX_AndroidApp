@@ -53,7 +53,7 @@
                 android:background="@drawable/rounded_corners25"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/deliveryicon" />
+                app:srcCompat="@drawable/boxicon" />
 
             <ImageButton
                 android:id="@+id/btn_rutas"
@@ -117,7 +117,7 @@
                 android:background="@drawable/rounded_corners25"
                 android:padding="35px"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/boxicon" />
+                app:srcCompat="@drawable/deliveryicon" />
 
             <ImageButton
                 android:id="@+id/btn_entregas"
