@@ -40,7 +40,7 @@ class EntregaAdapter (
         val descripcion = view.findViewById<TextView>(R.id.tv_descripcion)
         val elemento = getItem(p0) as Entrega
 
-        numEntrega.text = elemento.numEntrega
+        numEntrega.text = elemento.numEntrega.toString()
         bodega.text = elemento.bodega
         direccion.text = elemento.direccion
         descripcion.text = elemento.descripcion

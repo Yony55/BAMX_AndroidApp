@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
         if(sharedPreferences.getString("usuario", "@") != "@"){
-            edt_user.setText(sharedPreferences.getString("usuario", "@"))
+            edt_user.setText(sharedPreferences.getString("email", "@"))
         }
 
         val logIn = findViewById<Button>(R.id.btn_login)
@@ -86,14 +86,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             Response.Listener { response ->
                 Log.e("VolleyResponseTrue", response.toString())
                 val intent = Intent(this@MainActivity, MainMenu::class.java)
-                    with(sharedPreferences.edit()){
-                        putString("usuario", response.getString("name"))
-                        putBoolean("logIn", true)
-                        commit()
-                    }
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                    println("Datos correctos")
+                with(sharedPreferences.edit()){
+                    putString("nombre", response.getString("name"))
+                    putString("email", response.getString("email"))
+                    putString("dob", response.getString("date_of_birth"))
+                    putBoolean("logIn", true)
+                    commit()
+                }
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                println("Datos correctos")
             },
             { error ->
                 Log.e("VolleyResponse", error.toString())

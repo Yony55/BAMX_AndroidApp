@@ -5,13 +5,22 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
 import kotlinx.android.synthetic.main.activity_main_menu.*
+import kotlinx.android.synthetic.main.activity_vehiculo.*
+import mx.tec.bamxapp.service.APIVehiculo
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainMenu : AppCompatActivity(), View.OnClickListener {
+    lateinit var sharedVehicle: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -25,7 +34,8 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
         val vehiculo = findViewById<ImageButton>(R.id.btn_vehiculo)
         val recoleccion = findViewById<ImageButton>(R.id.btn_recoleccion)
         val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
-        val username = sharedPreferences.getString("usuario", "@")
+        sharedVehicle = getSharedPreferences("vehiculo", Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString("nombre", "@")
 
         tv_bienvenida.text = "Bienvenido, $username"
 
@@ -35,6 +45,33 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
         entregas.setOnClickListener(this@MainMenu)
         vehiculo.setOnClickListener(this@MainMenu)
         recoleccion.setOnClickListener(this@MainMenu)
+
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        var datosVehiculo: mx.tec.bamxapp.model.Vehiculo
+
+        val service = retrofit.create<APIVehiculo>(APIVehiculo::class.java)
+        service.getVehiculo(1).enqueue(object: Callback<mx.tec.bamxapp.model.Vehiculo> {
+            override fun onResponse(call: Call<mx.tec.bamxapp.model.Vehiculo>, response: Response<mx.tec.bamxapp.model.Vehiculo>) {
+                datosVehiculo = response.body()!!
+                with(sharedVehicle.edit()){
+                    putString("modelo", datosVehiculo.data[0].model)
+                    putString("color", datosVehiculo.data[0].color)
+                    putString("placas", datosVehiculo.data[0].plates)
+                    putString("poliza", datosVehiculo.data[0].insurance_policy)
+                    putString("verificacion", datosVehiculo.data[0].verification_date)
+                    putString("aseguradora", datosVehiculo.data[0].insurance_company)
+                    commit()
+                }
+            }
+
+            override fun onFailure(call: Call<mx.tec.bamxapp.model.Vehiculo>, t: Throwable) {
+                Log.e("RetrofitError", t.message!!)
+            }
+        })
 
         inventario.setOnClickListener {
             print("Diste click a inventario")

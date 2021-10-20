@@ -59,6 +59,14 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
 
         })
 
+        listAlmacenes.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(this, InventarioEntregas2::class.java)
+            intent.putExtra("Nombre", almacenesArray[position].nombre)
+            intent.putExtra("Imagen", almacenesArray[position].imagen)
+            intent.putExtra("Direccion", almacenesArray[position].direccion)
+            startActivity(intent)
+        }
+
 
         //////////////
 
