@@ -21,7 +21,7 @@ class InventarioCompletado : AppCompatActivity(), View.OnClickListener {
             print("Diste click a menu")
             val intent = Intent(this@InventarioCompletado, MainMenu::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_1, R.anim.slide_out_1)
+            overridePendingTransition(R.anim.slide_in_v1, R.anim.slide_out_v1)
         }
     }
 

@@ -29,11 +29,13 @@ class InventarioOpciones : AppCompatActivity(), View.OnClickListener {
             print("Diste click a entrega")
             val intent = Intent(this@InventarioOpciones, InventarioEntregas::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_v2, R.anim.slide_out_v2)
         }
         recoleccion.setOnClickListener {
             print("Diste click a recoleccion")
             val intent = Intent(this@InventarioOpciones, Inventario::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_v1, R.anim.slide_out_v1)
         }
     }
 

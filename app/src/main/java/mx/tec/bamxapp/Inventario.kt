@@ -136,6 +136,7 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
             print("Diste click a back")
             val intent = Intent(this@Inventario, InventarioOpciones::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_v2, R.anim.slide_out_v2)
         }
 
         //Prueba JEJE
@@ -169,5 +170,6 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
         super.onBackPressed()
         val intent = Intent(this@Inventario, InventarioOpciones::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_v2, R.anim.slide_out_v2)
     }
 }

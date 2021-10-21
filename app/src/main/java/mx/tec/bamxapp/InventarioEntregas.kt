@@ -80,6 +80,7 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
             print("Diste click a back")
             val intent = Intent(this@InventarioEntregas, InventarioOpciones::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_v1, R.anim.slide_out_v1)
         }
     }
 
@@ -90,5 +91,6 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
         super.onBackPressed()
         val intent = Intent(this@InventarioEntregas, InventarioOpciones::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_v1, R.anim.slide_out_v1)
     }
 }
