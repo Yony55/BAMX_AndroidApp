@@ -87,6 +87,7 @@ class Inventario2 : AppCompatActivity(), View.OnClickListener{
             print("Diste click a back")
             val intent = Intent(this@Inventario2, Inventario::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_2, R.anim.slide_out_2)
         }
 
         //Prueba JEJE
@@ -188,6 +189,7 @@ class Inventario2 : AppCompatActivity(), View.OnClickListener{
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
+                                overridePendingTransition(R.anim.slide_in_1, R.anim.slide_out_1)
                             },
                             { error ->
                                 Log.e("VolleyResponse", error.toString())
@@ -210,6 +212,14 @@ class Inventario2 : AppCompatActivity(), View.OnClickListener{
     }
 
     override fun onClick(p0: View?) {
+    }
+
+    override fun onBackPressed(){
+        super.onBackPressed()
+        val intent = Intent(this@Inventario2, Inventario::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_2, R.anim.slide_out_2)
+
     }
 
 

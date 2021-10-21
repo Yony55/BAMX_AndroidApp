@@ -156,11 +156,18 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
             intent.putExtra("Determinante", sociosArray[position].determinante)
             intent.putExtra("Direccion", sociosArray[position].direccion)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_1, R.anim.slide_out_1)
         }
 
     }
 
     override fun onClick(p0: View?) {
         //
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@Inventario, InventarioOpciones::class.java)
+        startActivity(intent)
     }
 }

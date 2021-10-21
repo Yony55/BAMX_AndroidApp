@@ -48,6 +48,7 @@ class Vehiculo:AppCompatActivity(), View.OnClickListener {
             print("Diste click a inventario")
             val intent = Intent(this@Vehiculo, EntregasInventario::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_1, R.anim.slide_out_1)
         }
 
         ///
@@ -62,5 +63,10 @@ class Vehiculo:AppCompatActivity(), View.OnClickListener {
     }
     override fun onClick(p0: View?) {
         //
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@Vehiculo, MainMenu::class.java)
+        startActivity(intent)
     }
 }

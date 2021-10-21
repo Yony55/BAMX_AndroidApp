@@ -67,6 +67,7 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
             intent.putExtra("Direccion", almacenesArray[position].direccion)
             intent.putExtra("id", almacenesArray[position].id)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_1, R.anim.slide_out_1)
         }
 
 
@@ -84,5 +85,10 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
 
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@InventarioEntregas, InventarioOpciones::class.java)
+        startActivity(intent)
     }
 }

@@ -34,10 +34,15 @@ class EntregasInventario: AppCompatActivity(), View.OnClickListener {
             print("Diste click a back")
             val intent = Intent(this@EntregasInventario, Vehiculo::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_2, R.anim.slide_out_2)
         }
     }
 
     override fun onClick(p0: View?) {
         //
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_2, R.anim.slide_out_2)
     }
 }

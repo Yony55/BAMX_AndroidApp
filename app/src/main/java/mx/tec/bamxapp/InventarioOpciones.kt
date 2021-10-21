@@ -41,4 +41,10 @@ class InventarioOpciones : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    override fun onBackPressed(){
+        super.onBackPressed()
+        val intent = Intent(this@InventarioOpciones, MainMenu::class.java)
+        startActivity(intent)
+    }
+
 }
