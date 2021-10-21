@@ -96,7 +96,7 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
                 }
                 for(i in locationArray.indices){
                     map.addMarker(MarkerOptions().position(locationArray[i]).title(namesArray[i])
-                        .snippet("Hola jeje").icon(BitmapDescriptorFactory.fromResource(R.drawable.storeicon)))
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.storeicon)))
                 }
             }
 

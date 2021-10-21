@@ -36,5 +36,6 @@
     <string name="Entrega">Entrega</string>
     <string name="Vehiculo">Vehículo</string>
     <string name="Aseguradora">Aseguradora:</string>
+    <string name="strLlamar">Llamar</string>
 
 </resources>

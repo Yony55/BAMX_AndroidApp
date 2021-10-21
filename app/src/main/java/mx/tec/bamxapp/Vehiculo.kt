@@ -2,6 +2,7 @@ package mx.tec.bamxapp
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -35,10 +36,17 @@ class Vehiculo:AppCompatActivity(), View.OnClickListener {
         val poliza = sharedPreferences.getString("poliza", "@")
         val verificacion = sharedPreferences.getString("verificacion", "@")
         val aseguradora = sharedPreferences.getString("aseguradora", "@")
+        val llamar = findViewById<Button>(R.id.buttonCall)
 
         back.setOnClickListener(this@Vehiculo)
+        llamar.setOnClickListener(this@Vehiculo)
         inventario.setOnClickListener(this@Vehiculo)
 
+        llamar.setOnClickListener{
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.setData(Uri.parse("tel: 1234567890"))
+            startActivity(intent)
+        }
         back.setOnClickListener {
             print("Diste click a back")
             val intent = Intent(this@Vehiculo, MainMenu::class.java)
