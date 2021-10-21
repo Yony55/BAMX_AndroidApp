@@ -241,7 +241,7 @@ class InventarioEntregas2: AppCompatActivity(), View.OnClickListener {
                                 Log.e("VolleyResponseTrue", response.toString())
                                 val intent = Intent(
                                     this@InventarioEntregas2,
-                                    InventarioCompletado::class.java
+                                    LoadingScreen::class.java
                                 )
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

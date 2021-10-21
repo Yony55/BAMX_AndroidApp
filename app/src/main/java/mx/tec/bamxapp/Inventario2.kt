@@ -189,7 +189,7 @@ class Inventario2 : AppCompatActivity(), View.OnClickListener{
                             Response.Listener { response ->
                                 Log.e("VolleyResponseTrue", response.toString())
                                 val intent =
-                                    Intent(this@Inventario2, InventarioCompletado::class.java)
+                                    Intent(this@Inventario2, LoadingScreen::class.java)
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)

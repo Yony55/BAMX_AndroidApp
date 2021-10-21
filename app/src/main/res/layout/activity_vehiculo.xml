@@ -29,7 +29,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/ic_back"></ImageButton>
+                android:src="@drawable/ic_back">
+
+            </ImageButton>
 
 
             <ImageView
@@ -132,12 +134,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/amarillo_bamx"
+            android:backgroundTint="@color/rojo_bamx"
+            android:drawableLeft="@drawable/ic_phone"
+            android:ems="10"
             android:fontFamily="@font/omnes_semibold"
             android:paddingLeft="20sp"
             android:paddingRight="20sp"
-            android:text="@string/strLlamar"
-            android:textColor="#000000"
+            android:text="@string/strAseguradora"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -155,7 +159,7 @@
             android:paddingRight="20sp"
             android:text="@string/Inventario"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonCall" />

@@ -140,4 +140,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         )
         queue.add(loginRequest)
     }
+
+    override fun onBackPressed() {
+        return
+    }
 }

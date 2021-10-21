@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/verde_bamx"
+            android:backgroundTint="@color/rojo_bamx"
             android:fontFamily="@font/omnes_semibold"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
