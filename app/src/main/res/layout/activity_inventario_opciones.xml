@@ -53,7 +53,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/LinearLayout"
-            app:srcCompat="@drawable/mercedesbenz" />
+            app:srcCompat="@drawable/deliverytruckicon" />
 
         <ImageButton
             android:id="@+id/btn_inv_recoleccion"
@@ -67,7 +67,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
-            app:srcCompat="@drawable/mercedesbenz" />
+            app:srcCompat="@drawable/deliveryicon" />
 
         <TextView
             android:id="@+id/textView9"

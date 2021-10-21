@@ -48,9 +48,10 @@
             android:layout_width="391dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_listview"
+            android:backgroundTint="@color/amarillo_bamx"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,28 +61,33 @@
                 android:id="@+id/tv_inv_socio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/omnes_semibold"
                 android:text="Aurrera Plan de Ayala"
-                android:textColor="#FFFFFF"
+                android:textAlignment="textEnd"
+                android:textColor="#000000"
                 android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/tv_inv_producto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/omnes_medium"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/omnes_semibold"
                 android:text="@string/Producto"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp" />
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_inv_dir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:fontFamily="@font/omnes_medium"
                 android:text="@string/Producto"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp" />
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -103,6 +109,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/omnes_semibold"
                 android:text="@string/str_abarrotes"
@@ -116,7 +123,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:fontFamily="@font/omnes_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -138,6 +148,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/omnes_semibold"
                 android:text="@string/str_fruta"
@@ -151,7 +162,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:fontFamily="@font/omnes_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -172,6 +186,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/omnes_semibold"
                 android:text="@string/str_pan"
@@ -185,7 +200,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:fontFamily="@font/omnes_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -206,6 +224,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/omnes_semibold"
                 android:text="@string/str_nocomestible"
@@ -219,7 +238,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:fontFamily="@font/omnes_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -240,6 +262,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/omnes_semibold"
                 android:text="@string/str_preparada"
@@ -253,7 +276,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:fontFamily="@font/omnes_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <Button
@@ -263,7 +289,10 @@
             android:background="@drawable/rounded_corners25"
             android:backgroundTint="@color/verde_bamx"
             android:fontFamily="@font/omnes_semibold"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:text="@string/strEnviar"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
