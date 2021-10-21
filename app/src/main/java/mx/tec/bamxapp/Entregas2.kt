@@ -1,5 +1,6 @@
 package mx.tec.bamxapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,9 @@ class Entregas2: AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_entregas2)
 
+        val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+        val routeId = sharedPreferences.getInt("route_id", 0)
+
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -32,7 +36,7 @@ class Entregas2: AppCompatActivity(), View.OnClickListener {
         val entregasArray = mutableListOf<Entrega>()
 
         val service = retrofit.create<APIEntregasAlmacen>(APIEntregasAlmacen::class.java)
-        service.getEntregas(1).enqueue(object: Callback<EntregasAlmacen> {
+        service.getEntregas(routeId).enqueue(object: Callback<EntregasAlmacen> {
             override fun onResponse(
                 call: Call<EntregasAlmacen>,
                 response: Response<EntregasAlmacen>

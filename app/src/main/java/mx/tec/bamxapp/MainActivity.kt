@@ -17,7 +17,13 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_main.*
+import mx.tec.bamxapp.model.DatosRetrofit
+import mx.tec.bamxapp.service.APIDatos
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var sharedPreferences: SharedPreferences
@@ -86,7 +92,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             Response.Listener { response ->
                 Log.e("VolleyResponseTrue", response.toString())
                 val intent = Intent(this@MainActivity, MainMenu::class.java)
+                var user_id = response.getInt("id")
                 with(sharedPreferences.edit()){
+                    putInt("user_id", response.getInt("id"))
                     putString("nombre", response.getString("name"))
                     putString("apellido", response.getString("first_lastname"))
                     putString("email", response.getString("email"))
@@ -95,6 +103,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     putBoolean("logIn", true)
                     commit()
                 }
+                var retrofit: Retrofit = Retrofit.Builder()
+                    .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+
+                var datosRutas1: DatosRetrofit
+
+                val service = retrofit.create<APIDatos>(APIDatos::class.java)
+                service.getDatos(user_id).enqueue(object: Callback<DatosRetrofit>{
+                    override fun onResponse(
+                        call: Call<DatosRetrofit>,
+                        response: retrofit2.Response<DatosRetrofit>
+                    ) {
+                        datosRutas1 = response.body()!!
+                        with(sharedPreferences.edit()){
+                            putInt("route_id", datosRutas1.data.id)
+                            putInt("vehicle_id", datosRutas1.data.vehicle_id)
+                            commit()
+                        }
+                    }
+                    override fun onFailure(call: Call<DatosRetrofit>, t: Throwable) {
+                        Log.e("RetrofitError", t.message!!)
+                    }
+                })
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 println("Datos correctos")

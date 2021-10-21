@@ -1,5 +1,6 @@
 package mx.tec.bamxapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -26,6 +27,8 @@ class Recolecciones:AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_recolecciones)
 
         val back = findViewById<ImageButton>(R.id.btn_back_maps)
+        val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+        val routeID = sharedPreferences.getInt("route_id", 0)
 
         back.setOnClickListener(this@Recolecciones)
 
@@ -46,7 +49,7 @@ class Recolecciones:AppCompatActivity(), View.OnClickListener {
         val almacenesArray = mutableListOf<Recoleccion>()
 
         val service = retrofit.create<APIRecolecciones>(APIRecolecciones::class.java)
-        service.getRecolecciones(1).enqueue(object: Callback<RecoleccionesRetrofit> {
+        service.getRecolecciones(routeID).enqueue(object: Callback<RecoleccionesRetrofit> {
             override fun onResponse(
                 call: Call<RecoleccionesRetrofit>,
                 response: Response<RecoleccionesRetrofit>

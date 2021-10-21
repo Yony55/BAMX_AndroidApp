@@ -3,6 +3,7 @@ package mx.tec.bamxapp
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.SharedMemory
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -64,6 +65,9 @@ class InventarioEntregas2: AppCompatActivity(), View.OnClickListener {
         val cantNo = inventarioPreferences.getString("NoComes", "0")
         val cantComida = inventarioPreferences.getString("Comida", "0")
         val id = intent.getIntExtra("id", 0)
+        val sharedPreferences = getSharedPreferences("login", 0)
+        val routeID = sharedPreferences.getInt("route_id", 0)
+        val userID = sharedPreferences.getInt("user_id", 0)
         //iv_inv_socio.setImageResource(imagen)
         tv_inv_socio.text = nombre
         tv_inv_dir.text = direccion
@@ -220,13 +224,14 @@ class InventarioEntregas2: AppCompatActivity(), View.OnClickListener {
                         }
                         queue = Volley.newRequestQueue(this)
                         val registroBodega = JSONObject()
-                        registroBodega.put("route_id", 1)
+                        registroBodega.put("route_id", routeID)
                         registroBodega.put("bodega_id", id)
-                        registroBodega.put("abarrotesStr", "${postAba}")
-                        registroBodega.put("frutaStr", "${postFruta}")
-                        registroBodega.put("panStr", "${postPan}")
-                        registroBodega.put("noStr", "${postnoComes}")
-                        registroBodega.put("comidaStr", "${postComida}")
+                        registroBodega.put("user_id", userID)
+                        registroBodega.put("abarrotesStr", postAba)
+                        registroBodega.put("frutaStr", postFruta)
+                        registroBodega.put("panStr", postPan)
+                        registroBodega.put("noStr", postnoComes)
+                        registroBodega.put("comidaStr", postComida)
 
                         val recoleccionRequest = JsonObjectRequest(
                             Request.Method.POST,

@@ -1,5 +1,6 @@
 package mx.tec.bamxapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -25,6 +26,9 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventario_entregas)
 
+        val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+        val routeID = sharedPreferences.getInt("route_id", 0)
+
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
@@ -37,7 +41,7 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
         val almacenesArray = mutableListOf<Almacenes>()
 
         val service = retrofit.create<APIEntregasAlmacen>(APIEntregasAlmacen::class.java)
-        service.getEntregas(1).enqueue(object: Callback<EntregasAlmacen> {
+        service.getEntregas(routeID).enqueue(object: Callback<EntregasAlmacen> {
             override fun onResponse(
                 call: Call<EntregasAlmacen>,
                 response: Response<EntregasAlmacen>

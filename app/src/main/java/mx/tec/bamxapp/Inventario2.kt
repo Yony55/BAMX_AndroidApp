@@ -64,6 +64,9 @@ class Inventario2 : AppCompatActivity(), View.OnClickListener{
         val cantPan = inventarioPreferences.getString("Pan", "0")
         val cantNo = inventarioPreferences.getString("NoComes", "0")
         val cantComida = inventarioPreferences.getString("Comida", "0")
+        val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+        val routeID = sharedPreferences.getInt("route_id", 0)
+        val userID = sharedPreferences.getInt("user_id", 0)
         //iv_inv_socio.setImageResource(imagen)
         tv_inv_socio.text = nombre
         tv_inv_producto.text = determinante
@@ -170,8 +173,9 @@ class Inventario2 : AppCompatActivity(), View.OnClickListener{
                         //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                         queue = Volley.newRequestQueue(this)
                         val registroSocio = JSONObject()
-                        registroSocio.put("route_id", 1)
+                        registroSocio.put("route_id", routeID)
                         registroSocio.put("socio_id", socio_id)
+                        registroSocio.put("user_id", userID)
                         registroSocio.put("abarrotesStr", postAba)
                         registroSocio.put("frutaStr", postFruta)
                         registroSocio.put("panStr", postPan)
@@ -193,7 +197,7 @@ class Inventario2 : AppCompatActivity(), View.OnClickListener{
                             },
                             { error ->
                                 Log.e("VolleyResponse", error.toString())
-                                edt_password.setText("")
+                                // edt_password.setText("")
                                 println("Datos Incorrectos")
                                 Toast.makeText(
                                     this@Inventario2,

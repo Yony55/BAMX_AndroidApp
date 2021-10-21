@@ -28,7 +28,7 @@ class Usuario : AppCompatActivity(), View.OnClickListener {
 
         val age = getAge(year!!, month!!, day!!)
 
-        tv_usuario_nombre.text = "$location $lastname"
+        tv_usuario_nombre.text = "$username $lastname"
         tv_usuario_anios.text = "${age} años"
         tv_usuario_fecha.text = "$licence"
 

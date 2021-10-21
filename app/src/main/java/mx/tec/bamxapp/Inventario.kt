@@ -1,5 +1,6 @@
 package mx.tec.bamxapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,6 +26,9 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
         setContentView(R.layout.activity_inventario)
 
+        val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+        val routeID = sharedPreferences.getInt("route_id", 0)
+
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -36,7 +40,7 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
         val sociosArray = mutableListOf<Socio>()
 
         val service = retrofit.create<APIRecolecciones>(APIRecolecciones::class.java)
-        service.getRecolecciones(1).enqueue(object: Callback<RecoleccionesRetrofit> {
+        service.getRecolecciones(routeID).enqueue(object: Callback<RecoleccionesRetrofit> {
             override fun onResponse(
                 call: Call<RecoleccionesRetrofit>,
                 response: Response<RecoleccionesRetrofit>
@@ -101,7 +105,6 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
                         sociosArray.add(temp)
                     }
                 }
-                Log.e("No se", sociosArray.size.toString())
                 adapter = SocioAdapter(this@Inventario, R.layout.socio_layout, sociosArray)
                 listSocio.adapter = adapter
             }

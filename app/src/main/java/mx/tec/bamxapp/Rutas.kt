@@ -44,6 +44,7 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
     lateinit var namesArray: MutableList<String>
     lateinit var locationBodegasArray: MutableList<LatLng>
     lateinit var namesBodegasArray: MutableList<String>
+    lateinit var location: Location
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRutasBinding.inflate(layoutInflater)
@@ -65,7 +66,6 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
 
     }
 
-    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         getLocationAccess()
@@ -132,7 +132,7 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
                 }
                 for(i in locationBodegasArray.indices){
                     map.addMarker(MarkerOptions().position(locationBodegasArray[i]).title(namesBodegasArray[i])
-                        .snippet("Hola jeje").icon(BitmapDescriptorFactory.fromResource(R.drawable.warehouseicon)))
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.warehouseicon)))
                 }
             }
 
@@ -142,8 +142,6 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
 
         })
 
-
-        var location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
         val zoomLevel = 15f
         // Add a marker in Sydney and move the camera
         //val sydney = LatLng(-34.0, 151.0)
@@ -156,6 +154,7 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
     private fun getLocationAccess(){
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
         == PackageManager.PERMISSION_GRANTED){
+            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)!!
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1f, this@Rutas)
             map.isMyLocationEnabled = true
         } else{
@@ -174,6 +173,7 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == LOCATION_PERMISSION_REQUEST){
             if(grantResults.contains(PackageManager.PERMISSION_GRANTED)){
+                location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)!!
                 map.isMyLocationEnabled = true
             } else{
                 finish()

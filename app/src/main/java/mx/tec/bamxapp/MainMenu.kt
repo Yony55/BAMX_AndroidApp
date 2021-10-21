@@ -10,6 +10,7 @@ import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
+import androidx.core.app.ActivityCompat
 import kotlinx.android.synthetic.main.activity_main_menu.*
 import kotlinx.android.synthetic.main.activity_vehiculo.*
 import mx.tec.bamxapp.service.APIVehiculo
@@ -27,6 +28,10 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
         setContentView(R.layout.activity_main_menu)
 
+        ActivityCompat.requestPermissions(this,
+            arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+            1)
+
         val inventario = findViewById<ImageButton>(R.id.btn_inventario)
         val rutas= findViewById<ImageButton>(R.id.btn_rutas)
         val usuario = findViewById<ImageButton>(R.id.btn_usuario)
@@ -36,6 +41,7 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
         val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
         sharedVehicle = getSharedPreferences("vehiculo", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("nombre", "@")
+        val vehicle_id = sharedPreferences.getInt("vehicle_id", 0)
 
         tv_bienvenida.text = "Bienvenido, $username"
 
@@ -54,7 +60,7 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
         var datosVehiculo: mx.tec.bamxapp.model.Vehiculo
 
         val service = retrofit.create<APIVehiculo>(APIVehiculo::class.java)
-        service.getVehiculo(1).enqueue(object: Callback<mx.tec.bamxapp.model.Vehiculo> {
+        service.getVehiculo(vehicle_id).enqueue(object: Callback<mx.tec.bamxapp.model.Vehiculo> {
             override fun onResponse(call: Call<mx.tec.bamxapp.model.Vehiculo>, response: Response<mx.tec.bamxapp.model.Vehiculo>) {
                 datosVehiculo = response.body()!!
                 with(sharedVehicle.edit()){
