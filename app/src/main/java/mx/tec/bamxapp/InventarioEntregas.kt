@@ -44,7 +44,7 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
             ) {
                 datosAlmacenesRetro = response.body()!!
                 for(i in datosAlmacenesRetro.data.indices){
-                    val temp = Almacenes(R.drawable.boxicon,
+                    val temp = Almacenes(R.drawable.warehouse,
                         datosAlmacenesRetro.data[i].bodega,
                         datosAlmacenesRetro.data[i].direccion,
                     datosAlmacenesRetro.data[i].bodega_id)
@@ -70,9 +70,7 @@ class InventarioEntregas : AppCompatActivity(), View.OnClickListener {
             overridePendingTransition(R.anim.slide_in_1, R.anim.slide_out_1)
         }
 
-
         //////////////
-
 
         val back = findViewById<ImageButton>(R.id.btn_back_maps)
 

@@ -1,9 +1,6 @@
 package mx.tec.bamxapp
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -15,18 +12,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
-import android.widget.ListView
-import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import mx.tec.bamxapp.model.RecoleccionesRetrofit
-import mx.tec.bamxapp.model.Socio
 import mx.tec.bamxapp.service.APIRecolecciones
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,6 +29,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import mx.tec.bamxapp.databinding.ActivityRutasBinding
+import mx.tec.bamxapp.model.EntregasAlmacen
+import mx.tec.bamxapp.service.APIEntregasAlmacen
 
 class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
     lateinit var currentLocation: LatLng
@@ -45,26 +42,15 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
     lateinit var locationManager: LocationManager
     lateinit var locationArray: MutableList<LatLng>
     lateinit var namesArray: MutableList<String>
+    lateinit var locationBodegasArray: MutableList<LatLng>
+    lateinit var namesBodegasArray: MutableList<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRutasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /////////////
-
-        val listOfLocations = listOf(
-            LatLng(18.9365141, -99.2474205),
-            LatLng(18.9223617, -99.2129684),
-            LatLng(18.934398, -99.1975317),
-            LatLng(18.9328423, -99.229588),
-            LatLng(18.9335512, -99.2188406),
-            LatLng(18.920793, -99.1999568),
-            LatLng(18.9536334, -99.245508),
-            LatLng(18.9334435, -99.2304862)
-        )
-
-
         val back = findViewById<ImageButton>(R.id.btn_back_maps1)
+        currentLocation = LatLng(0.0, 0.0)
 
         back.setOnClickListener{
             val intent = Intent(this, MainMenu::class.java)
@@ -79,6 +65,7 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
 
     }
 
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         getLocationAccess()
@@ -107,9 +94,9 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
                     namesArray.add(datosSociosMaps.data[i].socio)
                     // sharedPreferences.edit().putString("location" ,"Latitud ${datosSociosMaps.data[i].latitude}\nLongitud: ${datosSociosMaps.data[i].longitude}").commit()
                 }
-                Log.e("No se1", locationArray.size.toString())
                 for(i in locationArray.indices){
-                    map.addMarker(MarkerOptions().position(locationArray[i]).title(namesArray[i]))
+                    map.addMarker(MarkerOptions().position(locationArray[i]).title(namesArray[i])
+                        .snippet("Hola jeje").icon(BitmapDescriptorFactory.fromResource(R.drawable.storeicon)))
                 }
             }
 
@@ -118,11 +105,52 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
             }
 
         })
-        //val zoomLevel = 15f
+
+        ///
+        val retrofitAlmacen: Retrofit = Retrofit.Builder()
+            .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        var datosEntregasRetrofit: EntregasAlmacen
+        locationBodegasArray = mutableListOf()
+        namesBodegasArray = mutableListOf()
+
+        val serviceAlmacen = retrofitAlmacen.create<APIEntregasAlmacen>(APIEntregasAlmacen::class.java)
+        serviceAlmacen.getEntregas(1).enqueue(object: Callback<EntregasAlmacen> {
+            override fun onResponse(
+                call: Call<EntregasAlmacen>,
+                response: Response<EntregasAlmacen>
+            ) {
+                datosEntregasRetrofit = response.body()!!
+                for(i in datosEntregasRetrofit.data.indices) {
+                    val lati = datosEntregasRetrofit.data[i].latitude.toDouble()
+                    val long = datosEntregasRetrofit.data[i].longitude.toDouble()
+                    val temp = LatLng(lati, long)
+                    locationBodegasArray.add(temp)
+                    namesBodegasArray.add(datosEntregasRetrofit.data[i].bodega)
+                }
+                for(i in locationBodegasArray.indices){
+                    map.addMarker(MarkerOptions().position(locationBodegasArray[i]).title(namesBodegasArray[i])
+                        .snippet("Hola jeje").icon(BitmapDescriptorFactory.fromResource(R.drawable.warehouseicon)))
+                }
+            }
+
+            override fun onFailure(call: Call<EntregasAlmacen>, t: Throwable) {
+                Log.e("RetrofitError", t.message!!)
+            }
+
+        })
+
+
+        var location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        val zoomLevel = 15f
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        //map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoomLevel))
+        //val sydney = LatLng(-34.0, 151.0)
+        //map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        if (location != null) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude, location?.longitude), zoomLevel))
+        }
     }
 
     private fun getLocationAccess(){
@@ -154,6 +182,7 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
     }
 
     override fun onLocationChanged(p0: Location) {
+        //currentLocation = LatLng(p0.latitude, p0.longitude)
         //sharedPreferences.edit().putString("location" ,"Latitud ${p0.latitude}\nLongitud: ${p0.longitude}").commit()
     }
 

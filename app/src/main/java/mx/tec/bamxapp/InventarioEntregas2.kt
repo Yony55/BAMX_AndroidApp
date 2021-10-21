@@ -91,11 +91,27 @@ class InventarioEntregas2: AppCompatActivity(), View.OnClickListener {
 
         //Prueba JEJE
         prueba.setOnClickListener {
-            val aba = "${tn_inv_abarrotes.text}"
-            val fruta = "${tn_inv_fruta.text}"
-            val pan = "${tn_inv_pan.text}"
-            val no = "${tn_inv_nocomes.text}"
-            val comida = "${tn_inv_comidaprep.text}"
+            var aba = "${tn_inv_abarrotes.text}"
+            var fruta = "${tn_inv_fruta.text}"
+            var pan = "${tn_inv_pan.text}"
+            var no = "${tn_inv_nocomes.text}"
+            var comida = "${tn_inv_comidaprep.text}"
+
+            if(aba.isEmpty()){
+                aba = "0"
+            }
+            if(fruta.isEmpty()){
+                fruta = "0"
+            }
+            if(pan.isEmpty()){
+                pan = "0"
+            }
+            if(no.isEmpty()){
+                no = "0"
+            }
+            if(comida.isEmpty()){
+                comida = "0"
+            }
 
             if (checkValues(aba, cantAbarrotes!!) || checkValues(fruta, cantFruta!!) ||
                 checkValues(pan, cantPan!!) || checkValues(no, cantNo!!) || checkValues(

@@ -5,5 +5,7 @@ class Almacen (
     var bodega: String,
     var bodega_id: Int,
     var direccion: String,
+    var latitude: String,
+    var longitude: String,
     var descripcion: String
         )

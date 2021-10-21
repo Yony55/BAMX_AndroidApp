@@ -45,7 +45,7 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
                 for(i in datosRecoleccionesRetrofit.data.indices){
                     val determinante = datosRecoleccionesRetrofit.data[i].determinante
                     if (determinante == null || determinante.isEmpty()){
-                        val temp = Socio(R.drawable.boxicon,
+                        val temp = Socio(R.drawable.store,
                             datosRecoleccionesRetrofit.data[i].socio,
                             datosRecoleccionesRetrofit.data[i].determinante,
                             datosRecoleccionesRetrofit.data[i].direccion,
@@ -93,7 +93,7 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
                             datosRecoleccionesRetrofit.data[i].socio_id)
                         sociosArray.add(temp)
                     } else{
-                        val temp = Socio(R.drawable.boxicon,
+                        val temp = Socio(R.drawable.store,
                             datosRecoleccionesRetrofit.data[i].socio,
                             datosRecoleccionesRetrofit.data[i].determinante,
                             datosRecoleccionesRetrofit.data[i].direccion,
