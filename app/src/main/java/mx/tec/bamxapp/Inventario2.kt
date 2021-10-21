@@ -91,115 +91,127 @@ class Inventario2 : AppCompatActivity(), View.OnClickListener{
 
         //Prueba JEJE
         prueba.setOnClickListener {
-            val builder = AlertDialog.Builder(this@Inventario2)
-            if(tn_inv_abarrotes.text.toString() != ""){
-                postAba = "${tn_inv_abarrotes.text} kg"
-                newAba = Keval.eval(cantAbarrotes + "+" + tn_inv_abarrotes.text.toString()).toString()
-                abarrotesStr = tn_inv_abarrotes.text.toString()
-            } else{
-                if (cantAbarrotes != null) {
-                    newAba = cantAbarrotes
-                    abarrotesStr = "0"
-                    postAba = "0 kg"
-                }
-            }
-            if(tn_inv_fruta.text.toString() != ""){
-                postFruta = "${tn_inv_fruta.text} kg"
-                newFruta = Keval.eval(cantFruta + "+" + tn_inv_fruta.text.toString()).toString()
-                frutaStr = tn_inv_fruta.text.toString()
-            } else{
-                if (cantFruta != null) {
-                    newFruta = cantFruta
-                    frutaStr = "0"
-                    postFruta = "0 kg"
-                }
-            }
-            if(tn_inv_pan.text.toString() != ""){
-                postPan = "${tn_inv_pan.text} kg"
-                newPan = Keval.eval(cantPan + "+" + tn_inv_pan.text.toString()).toString()
-                panStr = tn_inv_pan.text.toString()
-            } else{
-                if (cantPan != null) {
-                    newPan = cantPan
-                    panStr = "0"
-                    postPan = "0 kg"
-                }
-            }
-            if(tn_inv_nocomes.text.toString() != ""){
-                postnoComes = "${tn_inv_nocomes.text} kg"
-                newNo = Keval.eval(cantNo + "+" + tn_inv_nocomes.text.toString()).toString()
-                noStr = tn_inv_nocomes.text.toString()
-            } else{
-                if (cantNo != null) {
-                    newNo = cantNo
-                    noStr = "0"
-                    postnoComes = "0 kg"
-                }
-            }
-            if(tn_inv_comidaprep.text.toString() != ""){
-                postComida = "${tn_inv_comidaprep.text} kg"
-                newComida = Keval.eval(cantComida + "+" + tn_inv_comidaprep.text.toString()).toString()
-                comidaStr = tn_inv_comidaprep.text.toString()
-            } else{
-                if (cantComida != null) {
-                    newComida = cantComida
-                    comidaStr = "0"
-                    postComida = "0 kg"
-                }
-            }
-            builder.setTitle("Confirmar inventario")
-                .setMessage("Abarrotes: ${abarrotesStr} kg\n" +
-                "Fruta y verdura: ${frutaStr} kg\n" +
-                "Pan: ${panStr} kg\n" +
-                "No comestibles: ${noStr} kg\n" +
-                "Comida preparada: ${comidaStr} kg\n")
-                .setPositiveButton("Confirmar"){dialog, button ->
-                    with(inventarioPreferences.edit()){
-                        putString("Abarrotes", newAba)
-                        putString("Frutas", newFruta)
-                        putString("Pan", newPan)
-                        putString("NoComes", newNo)
-                        putString("Comida", newComida)
-                        commit()
+                val builder = AlertDialog.Builder(this@Inventario2)
+                if (tn_inv_abarrotes.text.toString() != "") {
+                    postAba = "${tn_inv_abarrotes.text} kg"
+                    newAba = Keval.eval(cantAbarrotes + "+" + tn_inv_abarrotes.text.toString())
+                        .toString()
+                    abarrotesStr = tn_inv_abarrotes.text.toString()
+                } else {
+                    if (cantAbarrotes != null) {
+                        newAba = cantAbarrotes
+                        abarrotesStr = "0"
+                        postAba = "0 kg"
                     }
-                    //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                    queue = Volley.newRequestQueue(this)
-                    val registroSocio = JSONObject()
-                    registroSocio.put("route_id", 1)
-                    registroSocio.put("socio_id", socio_id)
-                    registroSocio.put("abarrotesStr", "${postAba}")
-                    registroSocio.put("frutaStr", "${postFruta}")
-                    registroSocio.put("panStr", "${postPan}")
-                    registroSocio.put("noStr", "${postnoComes}")
-                    registroSocio.put("comidaStr", "${postComida}")
-
-                    val recoleccionRequest = JsonObjectRequest(
-                        Request.Method.POST,
-                        "http://bamx.denissereginagarcia.com/public/api/raw-item",
-                        registroSocio,
-                        Response.Listener { response ->
-                            Log.e("VolleyResponseTrue", response.toString())
-                            val intent = Intent(this@Inventario2, InventarioCompletado::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                            startActivity(intent)
-                        },
-                        { error ->
-                            Log.e("VolleyResponse", error.toString())
-                            edt_password.setText("")
-                            println("Datos Incorrectos")
-                            Toast.makeText(this@Inventario2, "Datos Incorrectos", Toast.LENGTH_SHORT).show()
-                        }
+                }
+                if (tn_inv_fruta.text.toString() != "") {
+                    postFruta = "${tn_inv_fruta.text} kg"
+                    newFruta = Keval.eval(cantFruta + "+" + tn_inv_fruta.text.toString()).toString()
+                    frutaStr = tn_inv_fruta.text.toString()
+                } else {
+                    if (cantFruta != null) {
+                        newFruta = cantFruta
+                        frutaStr = "0"
+                        postFruta = "0 kg"
+                    }
+                }
+                if (tn_inv_pan.text.toString() != "") {
+                    postPan = "${tn_inv_pan.text} kg"
+                    newPan = Keval.eval(cantPan + "+" + tn_inv_pan.text.toString()).toString()
+                    panStr = tn_inv_pan.text.toString()
+                } else {
+                    if (cantPan != null) {
+                        newPan = cantPan
+                        panStr = "0"
+                        postPan = "0 kg"
+                    }
+                }
+                if (tn_inv_nocomes.text.toString() != "") {
+                    postnoComes = "${tn_inv_nocomes.text} kg"
+                    newNo = Keval.eval(cantNo + "+" + tn_inv_nocomes.text.toString()).toString()
+                    noStr = tn_inv_nocomes.text.toString()
+                } else {
+                    if (cantNo != null) {
+                        newNo = cantNo
+                        noStr = "0"
+                        postnoComes = "0 kg"
+                    }
+                }
+                if (tn_inv_comidaprep.text.toString() != "") {
+                    postComida = "${tn_inv_comidaprep.text} kg"
+                    newComida =
+                        Keval.eval(cantComida + "+" + tn_inv_comidaprep.text.toString()).toString()
+                    comidaStr = tn_inv_comidaprep.text.toString()
+                } else {
+                    if (cantComida != null) {
+                        newComida = cantComida
+                        comidaStr = "0"
+                        postComida = "0 kg"
+                    }
+                }
+                builder.setTitle("Confirmar inventario")
+                    .setMessage(
+                        "Abarrotes: ${abarrotesStr} kg\n" +
+                                "Fruta y verdura: ${frutaStr} kg\n" +
+                                "Pan: ${panStr} kg\n" +
+                                "No comestibles: ${noStr} kg\n" +
+                                "Comida preparada: ${comidaStr} kg\n"
                     )
-                    queue.add(recoleccionRequest)
-                }
-                .setNegativeButton("Cancelar"){dialog, button ->
-                    dialog.dismiss()
-                }
-                .show()
+                    .setPositiveButton("Confirmar") { dialog, button ->
+                        with(inventarioPreferences.edit()) {
+                            putString("Abarrotes", newAba)
+                            putString("Frutas", newFruta)
+                            putString("Pan", newPan)
+                            putString("NoComes", newNo)
+                            putString("Comida", newComida)
+                            commit()
+                        }
+                        //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                        queue = Volley.newRequestQueue(this)
+                        val registroSocio = JSONObject()
+                        registroSocio.put("route_id", 1)
+                        registroSocio.put("socio_id", socio_id)
+                        registroSocio.put("abarrotesStr", postAba)
+                        registroSocio.put("frutaStr", postFruta)
+                        registroSocio.put("panStr", postPan)
+                        registroSocio.put("noStr", postnoComes)
+                        registroSocio.put("comidaStr", postComida)
+
+                        val recoleccionRequest = JsonObjectRequest(
+                            Request.Method.POST,
+                            "http://bamx.denissereginagarcia.com/public/api/raw-item",
+                            registroSocio,
+                            Response.Listener { response ->
+                                Log.e("VolleyResponseTrue", response.toString())
+                                val intent =
+                                    Intent(this@Inventario2, InventarioCompletado::class.java)
+                                intent.flags =
+                                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(intent)
+                            },
+                            { error ->
+                                Log.e("VolleyResponse", error.toString())
+                                edt_password.setText("")
+                                println("Datos Incorrectos")
+                                Toast.makeText(
+                                    this@Inventario2,
+                                    "Datos Incorrectos",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        )
+                        queue.add(recoleccionRequest)
+                    }
+                    .setNegativeButton("Cancelar") { dialog, button ->
+                        dialog.dismiss()
+                    }
+                    .show()
         }
     }
 
     override fun onClick(p0: View?) {
     }
+
+
 
 }

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.BAMXapp"
         android:usesCleartextTraffic="true">
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCJI21MhiubzPS76LyTTHR0yAOaYGmKcLc"/>
+            android:value="${GOOGLE_MAPS_API_KEY}"/>
         <activity
             android:name=".Recolecciones"
             android:exported="true"

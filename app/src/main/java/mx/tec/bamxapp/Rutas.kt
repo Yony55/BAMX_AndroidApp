@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
@@ -31,16 +32,17 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import mx.tec.bamxapp.databinding.ActivityRutasBinding
 
-class Rutas : AppCompatActivity(), LocationListener {
-    lateinit var locationManager: LocationManager
-    lateinit var map: GoogleMap
+class Rutas : AppCompatActivity(), OnMapReadyCallback {
     lateinit var currentLocation: LatLng
-    //lateinit var txtLocation: TextView
-    @SuppressLint("MissingPermission")
+    private lateinit var map: GoogleMap
+    private lateinit var binding: ActivityRutasBinding
+    private val LOCATION_PERMISSION_REQUEST = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_rutas)
+        binding = ActivityRutasBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
@@ -74,9 +76,6 @@ class Rutas : AppCompatActivity(), LocationListener {
 
         /////////////
 
-
-
-
         val listOfLocations = listOf(
             LatLng(18.9365141, -99.2474205),
             LatLng(18.9223617, -99.2129684),
@@ -89,82 +88,53 @@ class Rutas : AppCompatActivity(), LocationListener {
         )
 
 
-
-        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-
-        //txtLocation = findViewById(R.id.txt_location)
         val back = findViewById<ImageButton>(R.id.btn_back_maps1)
-
-        checkPermissions(this)
-
-        var mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
-
-        mapFragment.getMapAsync{ googleMap ->
-            map = googleMap
-            map.isMyLocationEnabled = true
-
-            for(i in locationArray.indices){
-                val location = locationArray[i]
-                map.addMarker(MarkerOptions()
-                    .position(location)
-                    .title(namesArray[i]))
-            }
-        }
 
         back.setOnClickListener{
             val intent = Intent(this, MainMenu::class.java)
             startActivity(intent)
         }
 
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.mapFragment) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+
     }
 
-    override fun onLocationChanged(p0: Location) {
-        //txtLocation.text = "Latitud ${p0.latitude}\nLongitud: ${p0.longitude}"
-        currentLocation = LatLng(p0.latitude, p0.longitude)
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+        getLocationAccess()
+        //val zoomLevel = 15f
+        // Add a marker in Sydney and move the camera
+        //val sydney = LatLng(-34.0, 151.0)
+        //map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        //map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoomLevel))
     }
 
-    private fun checkPermissions(context: Activity){
-        if(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            if(ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission.ACCESS_FINE_LOCATION)){
-                val builder = AlertDialog.Builder(context)
-                builder.setTitle("Servicio de ubicación requerido")
-                    .setMessage("El acceso a la ubicación es requerido para utilizar la aplicación.")
-                    .setPositiveButton("Entendido"){ _, _ ->
-                        ActivityCompat.requestPermissions(context,
-                            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 69)
-                    }
-                val dialog = builder.create()
-                dialog.show()
-            } else{
-                ActivityCompat.requestPermissions(context,
-                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 69)
-
-            }
+    private fun getLocationAccess(){
+        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+        == PackageManager.PERMISSION_GRANTED){
+            map.isMyLocationEnabled = true
         } else{
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1f, this)
+            ActivityCompat.requestPermissions(this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+            LOCATION_PERMISSION_REQUEST)
         }
     }
 
     @SuppressLint("MissingPermission")
     override fun onRequestPermissionsResult(
         requestCode: Int,
-        permissions: Array<out String>,
+        permissions: Array<String>,
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when(requestCode){
-            69 -> {
-                if(grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    //ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 420)
-                } else{
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1f, this@Rutas)
-                }
+        if(requestCode == LOCATION_PERMISSION_REQUEST){
+            if(grantResults.contains(PackageManager.PERMISSION_GRANTED)){
+                map.isMyLocationEnabled = true
+            } else{
+                finish()
             }
         }
     }
-
-    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-        //super.onStatusChanged(provider, status, extras)
-    }
-
 }
