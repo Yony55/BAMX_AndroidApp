@@ -101,6 +101,7 @@ class Inventario : AppCompatActivity(), View.OnClickListener {
                         sociosArray.add(temp)
                     }
                 }
+                Log.e("No se", sociosArray.size.toString())
                 adapter = SocioAdapter(this@Inventario, R.layout.socio_layout, sociosArray)
                 listSocio.adapter = adapter
             }

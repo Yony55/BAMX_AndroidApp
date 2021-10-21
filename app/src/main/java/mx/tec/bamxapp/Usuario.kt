@@ -21,13 +21,14 @@ class Usuario : AppCompatActivity(), View.OnClickListener {
         val lastname = sharedPreferences.getString("apellido", "@")
         val dob = sharedPreferences.getString("dob", "@")
         val licence = sharedPreferences.getString("licence", "@")
+        val location = sharedPreferences.getString("location", "@")
         val year = dob?.substring(0, 4)?.toInt()
         val month = dob?.substring(5, 7)?.toInt()
         val day = dob?.substring(8, 10)?.toInt()
 
         val age = getAge(year!!, month!!, day!!)
 
-        tv_usuario_nombre.text = "$username $lastname"
+        tv_usuario_nombre.text = "$location $lastname"
         tv_usuario_anios.text = "${age} años"
         tv_usuario_fecha.text = "$licence"
 

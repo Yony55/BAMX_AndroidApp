@@ -6,6 +6,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -34,45 +35,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import mx.tec.bamxapp.databinding.ActivityRutasBinding
 
-class Rutas : AppCompatActivity(), OnMapReadyCallback {
+class Rutas : AppCompatActivity(), OnMapReadyCallback, LocationListener {
     lateinit var currentLocation: LatLng
     private lateinit var map: GoogleMap
     private lateinit var binding: ActivityRutasBinding
     private val LOCATION_PERMISSION_REQUEST = 1
+    //lateinit var txtLocation: TextView
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var locationManager: LocationManager
+    lateinit var locationArray: MutableList<LatLng>
+    lateinit var namesArray: MutableList<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRutasBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        var datosSociosMaps: RecoleccionesRetrofit
-        val locationArray = mutableListOf<LatLng>()
-        val namesArray = mutableListOf<String>()
-
-        val service = retrofit.create<APIRecolecciones>(APIRecolecciones::class.java)
-        service.getRecolecciones(1).enqueue(object: Callback<RecoleccionesRetrofit> {
-            override fun onResponse(
-                call: Call<RecoleccionesRetrofit>,
-                response: Response<RecoleccionesRetrofit>
-            ) {
-                datosSociosMaps = response.body()!!
-                for(i in datosSociosMaps.data.indices){
-                    val lati = datosSociosMaps.data[i].latitude.toDouble()
-                    val long = datosSociosMaps.data[i].longitude.toDouble()
-                    locationArray.add(LatLng(lati, long))
-                    namesArray.add(datosSociosMaps.data[i].socio)
-                }
-            }
-
-            override fun onFailure(call: Call<RecoleccionesRetrofit>, t: Throwable) {
-                Log.e("RetrofitError", t.message!!)
-            }
-
-        })
 
         /////////////
 
@@ -95,6 +71,8 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback {
             startActivity(intent)
         }
 
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.mapFragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -104,16 +82,53 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         getLocationAccess()
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("http://bamx.denissereginagarcia.com/public/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        var datosSociosMaps: RecoleccionesRetrofit
+        locationArray = mutableListOf()
+        namesArray = mutableListOf()
+        sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+
+        val service = retrofit.create<APIRecolecciones>(APIRecolecciones::class.java)
+        service.getRecolecciones(1).enqueue(object: Callback<RecoleccionesRetrofit> {
+            override fun onResponse(
+                call: Call<RecoleccionesRetrofit>,
+                response: Response<RecoleccionesRetrofit>
+            ) {
+                datosSociosMaps = response.body()!!
+                for(i in datosSociosMaps.data.indices){
+                    val lati = datosSociosMaps.data[i].latitude.toDouble()
+                    val long = datosSociosMaps.data[i].longitude.toDouble()
+                    val temp = LatLng(lati, long)
+                    locationArray.add(temp)
+                    namesArray.add(datosSociosMaps.data[i].socio)
+                    // sharedPreferences.edit().putString("location" ,"Latitud ${datosSociosMaps.data[i].latitude}\nLongitud: ${datosSociosMaps.data[i].longitude}").commit()
+                }
+                Log.e("No se1", locationArray.size.toString())
+                for(i in locationArray.indices){
+                    map.addMarker(MarkerOptions().position(locationArray[i]).title(namesArray[i]))
+                }
+            }
+
+            override fun onFailure(call: Call<RecoleccionesRetrofit>, t: Throwable) {
+                Log.e("RetrofitError", t.message!!)
+            }
+
+        })
         //val zoomLevel = 15f
         // Add a marker in Sydney and move the camera
-        //val sydney = LatLng(-34.0, 151.0)
-        //map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        val sydney = LatLng(-34.0, 151.0)
+        map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         //map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoomLevel))
     }
 
     private fun getLocationAccess(){
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
         == PackageManager.PERMISSION_GRANTED){
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1f, this@Rutas)
             map.isMyLocationEnabled = true
         } else{
             ActivityCompat.requestPermissions(this,
@@ -137,4 +152,9 @@ class Rutas : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
+
+    override fun onLocationChanged(p0: Location) {
+        //sharedPreferences.edit().putString("location" ,"Latitud ${p0.latitude}\nLongitud: ${p0.longitude}").commit()
+    }
+
 }
